@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>map</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <google-map height="100%" width="100%" [center]="center">
+    <map-marker
+      *ngFor="let point of points"
+      [position]="point.position"
+      [title]="point.title"
+    >
+    </map-marker>
+  </google-map>
+  <ion-slides (ionSlideDidChange)="onSlideDidChange()">
+    <ion-slide *ngFor="let point of points">
+      <ion-card>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img [src]="point.image">
+          </ion-thumbnail>
+          <ion-label class="ion-text-wrap">
+            <h2>{{ point.title }}</h2>
+            <p>{{ point.text }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
