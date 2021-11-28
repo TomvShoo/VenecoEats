@@ -199,8 +199,8 @@ points: MyPoint[] = [
 <google-map>
   <map-marker
     *ngFor="let point of points"
-    [position]="marker.position"
-    [title]="marker.title"
+    [position]="point.position"
+    [title]="point.title"
   >
   </map-marker>
 </google-map>
@@ -209,6 +209,9 @@ points: MyPoint[] = [
 # Slides
 // src/app/map/map.page.ts
 ```ts
+import { GoogleMap } from '@angular/google-maps';
+import { IonSlides } from '@ionic/angular';
+
 @ViewChild(GoogleMap, { static: false }) map: GoogleMap;
 @ViewChild(IonSlides, { static: false }) slides: IonSlides;
 
