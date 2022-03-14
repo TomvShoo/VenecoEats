@@ -1,0 +1,7 @@
+{
+  "name": "CopiaEats",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
