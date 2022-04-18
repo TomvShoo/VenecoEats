@@ -1,24 +1,34 @@
-.inicioSesion {
-    display: flex;
-    align-items: center;
-}
-
-.inicioSesion div {
-    width: 20%;
-    border: solid 1px black;
+#flag {
+  width: 20%;
+  border: solid 1px black;
+  margin-right: 5%;
 }
 
 .numeroTelefono {
-    border: solid 1px black;
-    background-color: #e2e3e6;
+  border: solid 1px black;
+  background-color: #e2e3e6;
+}
+.boton-google {
+  margin-top: 10px;
+  border: solid 1px black;
 }
 
 .boton-facebook {
-    border: solid 1px black;
-    border-radius: 11px
+  border: solid 1px black;
 }
 
-.boton-google {
-    border: solid 1px black;
-    border-radius: 11px
+.text1 {
+    font-size: small;
+}
+
+.titulo {
+    margin-bottom: 2%;
+    width: fit-content;
+    height: 7%;
+    margin-left: 2%;
+    margin-top: -2%;
+}
+
+.container {
+    margin-top: 10%;
 }

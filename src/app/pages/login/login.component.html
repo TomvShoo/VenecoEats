@@ -1,64 +1,47 @@
-<ion-item>
-    <ion-grid class="a">
-        <ion-row>
-            <ion-col>
-                <ion-label class="titulo-app">
-
-                </ion-label>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-</ion-item>
 <ion-content [fullscreen]="true">
-    <ion-grid>
-        <ion-row class="ion-align-items-center">
+    <div class="titulo ion-no-padding">
+
             <ion-col>
-                <ion-card-header>
-                    <ion-card-title class="ion-text-center">
-                        Ingresa tu numero telefonico
-                    </ion-card-title>
-                </ion-card-header>
-                <form [formGroup]="loginForm" (ngSubmit)="ingreso()">
-                    <ion-row>
-                        <ion-col class="inicioSesion">
-                            <div>
-                                <ion-img
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Flag_of_Chile_%281818-1854%29.svg/220px-Flag_of_Chile_%281818-1854%29.svg.png">
-                                </ion-img>
-                            </div>
-                            <ion-item>
-                                <ion-input class="numeroTelefono" formControlName="numero" type="text">+56</ion-input>
-                            </ion-item>
-                        </ion-col>
-                    </ion-row>
-                    <ion-row>
-                        <ion-col>
-                            <ion-button expand="block" type="submit" color="dark">Continuar</ion-button>
-
-                        </ion-col>
-                    </ion-row>
-                </form>
-
-                <ion-grid>
-                    <ion-card-title class="ion-text-center">
-                        Or
-                    </ion-card-title>
-                    <ion-row>
-                        <ion-col>
-                            <ion-button class="boton-facebook" expand="block" color="tertiary" href="">
-                                <ion-icon name="logo-facebook"></ion-icon>
-                                Continuar con Facebook
-                            </ion-button>
-                        </ion-col>
-                        <ion-col>
-                            <ion-button class="boton-google" expand="block" color="light" href="">
-                                <ion-icon name="logo-google"></ion-icon>
-                                Continuar con Google
-                            </ion-button>
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
+                <h2 class="ion-text-capitalize">ingresa tu numero telefonico</h2>
             </ion-col>
-        </ion-row>
-    </ion-grid>
+
+    </div>
+    <div class="container-fluid">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-row class="inicioSesion">
+                        <ion-img id="flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Flag_of_Chile_%281818-1854%29.svg/220px-Flag_of_Chile_%281818-1854%29.svg.png"></ion-img>
+                        <ion-input class="numeroTelefono" type="text" placeholder=" Numero telefonico">+56</ion-input>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-button expand="full" color="dark">
+                        Continuar
+                        <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+                    </ion-button>                          
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <h6 class="text1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis consequuntur doloremque dolore corrupti unde odit provident dicta eos repellendus ipsa.</h6>
+                    <h6 class="ion-text-center">-------------------------------- Or --------------------------------</h6>
+                </ion-col>
+            </ion-row> 
+            <ion-row>
+                <ion-col>
+                    <ion-button class="boton-facebook" expand="full" color="tertiary" href="">
+                        <ion-icon slot="start" name="logo-facebook"></ion-icon>
+                        Continuar con Facebook
+                    </ion-button>
+                    <ion-button class="boton-google" expand="full" color="light" href="">
+                        <ion-icon slot="start" name="logo-google"></ion-icon>
+                        Continuar con Google
+                    </ion-button>
+                </ion-col>
+            </ion-row> 
+        </ion-grid>
+    </div>
 </ion-content>
