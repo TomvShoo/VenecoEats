@@ -1,0 +1,89 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.anchoMaximo{
+    // min-width: 100% !important;
+}
+
+.inputs{
+    background-color: #E7E7E7;
+    border: 1px solid #909090;
+    border-radius: 10px;
+    padding: 12px 10px !important;
+    
+}
+.formularioUno{
+    position: absolute;
+    right: 200%;
+}
+.formularioDos{
+    position: absolute;
+    // right: 0%;
+    right: 100%;
+    padding: 35px;
+    min-width: 100% !important;
+    h3 {
+        font-size: 25px;
+    }
+}
+
+// Formulario pagina 1
+
+.registerBackground{
+    position: fixed;
+    z-index: 1;
+}     
+
+.campo{
+    background-color: #fff;
+    // height: 50px;
+    height: 21%;
+    // padding: 30px 20px;
+    position: fixed;
+    z-index: 11;
+    bottom: 0;
+    width: 100%;
+
+    ion-col{
+        margin: auto;
+
+        
+    }    
+}    
+
+// Formulario pagina 2
+
+.campoCodigos {
+    margin: 30px 0;
+}
+.inputCodigo{
+    max-width: 48px;
+    text-align: center;
+}
+
+.campoBotones{
+    width: 100%;
+    position: fixed;
+    bottom: 10px;
+}
+
+// Formulario pagina 3
+
+.datosUsuario{
+    padding: 0 35px;
+    
+    ion-row{
+        margin-bottom:10px;
+    }
+}
+
+ion-select{
+    width: 100%;
+}
