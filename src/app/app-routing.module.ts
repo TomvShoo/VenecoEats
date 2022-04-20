@@ -1,12 +1,25 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
+
+import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () =>
+  redirectUnauthorizedTo(['/']);
+
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   },
+  {
+    path: 'chat',
+    //...canActivate(redirectUnauthorizedToLogin),
+    loadChildren: () => import('./pages/chat/chat.module').then(m => m.ChatPageModule)
+  },
+
+
+
 ];
 
 @NgModule({
@@ -15,4 +28,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

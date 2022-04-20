@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "venecochat": {
+      "hosting": {
+        "app": [
+          "venecochat"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "venecochat"
+  }
+}
