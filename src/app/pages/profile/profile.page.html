@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+    <ion-title id="title">Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <!--Imagen Y Rut-->
+    <ion-row>
+      <ion-col>
+        <ion-img id="foto" src="https://i.pinimg.com/custom_covers/222x/85498161615209203_1636332751.jpg"></ion-img>
+      </ion-col>
+      <ion-col class="ion-align-self-center" id="NR">
+        <ion-row>
+          <ion-label floating>Nombre:</ion-label>  
+        </ion-row>
+        <ion-row>
+          <ion-text>{{user.p_nombre}} {{user.s_nombre}} {{user.apellido_p}} {{user.apellido_m}}</ion-text>
+        </ion-row>
+        <ion-row id="rutL">
+          <ion-label floating>Rut:</ion-label>              
+        </ion-row>
+        <ion-row>
+          <ion-text>{{user.rut}}</ion-text>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <!---Direccion hasta Correo-->
+    <ion-row>
+      <ion-col size="12" id="datos">
+        <ion-row>
+          <ion-label floating>Direccion:</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-text>{{user.direccion}}</ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-label floating>Nacionalidad:</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-text>{{user.nacionalidad}}</ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-label floating>Sexo:</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-text>{{user.sexo}}</ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-label floating>Fecha de nacimiento:</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-text>{{user.fecha_nac}}</ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-label floating>Correo:</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-text>{{user.correo}}</ion-text>
+        </ion-row>
+        <ion-row>
+          <h5 id="link">Cambiar contrasenia</h5>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

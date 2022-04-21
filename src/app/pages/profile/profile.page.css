@@ -1,0 +1,48 @@
+#foto {
+    border:solid 0.5px;
+    width: 130px;
+    height: 130px;
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+#NR {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-top: 8%;
+    margin-right: 10%;
+}
+
+#NR ion-text {
+    text-decoration: underline;
+    font-size: large;
+}
+
+ion-label {
+    font-weight: bold;
+}
+
+#rutL {
+    margin-top: 10%;
+}
+
+#datos {
+    margin-top: 6%;
+    margin-left: 5%;
+    padding: 0;
+}
+
+#datos ion-text {
+    margin-top: 4%;
+    margin-bottom: 4%;
+    text-decoration: underline;
+    font-size: large;
+}
+
+#link {
+    text-decoration: underline;
+    color: aqua;
+    margin-top: 50%;
+}

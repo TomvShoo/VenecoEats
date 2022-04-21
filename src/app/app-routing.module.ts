@@ -7,6 +7,16 @@ const routes: Routes = [
     path: '',
     component: LoginComponent
   },
+  {
+    path: 'perfil',
+    children:[
+      {
+        path:":userId",
+        loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+      }
+    ]
+  },
+
 ];
 
 @NgModule({
