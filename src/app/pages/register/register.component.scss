@@ -1,15 +1,46 @@
 *{
     padding: 0;
     margin: 0;
+    // box-sizing: border-box;
 }
 
 input {
     padding: 0 !important;
     margin: 0 !important;
 }
+.campoBotones{
+    width: 100%;
+    bottom: 10px;
+    z-index: 21;
+    display: flex;
+    justify-content: center;
+}
 
-.anchoMaximo{
+.fixed {
+    position: fixed;
+}
+
+.col-center {
+    // display: flex;
+    // justify-content: center;
+    // margin: 0;
+    ion-button {
+        width: 90%;
+    }
+}
+
+.anchoMa1ximo{
     // min-width: 100% !important;
+}
+
+.mostrarContraseñaCampo{
+    margin: auto;
+    text-align: center;
+
+    .mostrarContraseña{
+
+        font-size: 35px;
+    }
 }
 
 .inputs{
@@ -21,8 +52,12 @@ input {
 }
 .formularioUno{
     position: absolute;
-    right: 200%;
+    // right: 100%;
+    width: 100%;
+    z-index: 1;
 }
+
+// Comentado
 .formularioDos{
     position: absolute;
     // right: 0%;
@@ -32,8 +67,46 @@ input {
     h3 {
         font-size: 25px;
     }
+    z-index: 22;
 }
 
+.formularioTres{
+    position: absolute;
+    // right: 100%;
+    width: 100%;
+}
+
+.formularioCuatro {
+    position: absolute;
+    // right: 100%;
+    width: 100%;
+    padding: 35px;
+    min-width: 100% !important;
+    h3 {
+        font-size: 22px;
+    }
+    ion-col{
+        margin-bottom: 10px;
+    }
+}
+
+// Comentado
+.formularioCinco {
+    position: absolute;
+    right: 100%;
+    width: 100%;
+    // padding: 20px;
+    
+}
+
+// Comentado
+.formularioSeis {
+    position: absolute;
+
+    h4 {
+        font-size: 18px;
+    }
+}
 // Formulario pagina 1
 
 .registerBackground{
@@ -68,11 +141,7 @@ input {
     text-align: center;
 }
 
-.campoBotones{
-    width: 100%;
-    position: fixed;
-    bottom: 10px;
-}
+
 
 // Formulario pagina 3
 
@@ -87,3 +156,29 @@ input {
 ion-select{
     width: 100%;
 }
+
+
+// Formulario 5
+.detallePedido{
+    display: flex;
+    align-items: center;
+    border: 1px solid #000;
+    background-color: #E7E7E7;
+    margin-top: 25px;
+
+    ion-icon {
+        width: 10%;
+        font-size: 25px;
+        border-right: 1px solid #909090;
+    }
+    ion-input {
+        width: 80%;
+        border: none;
+    }
+}
+
+
+.oculta {
+    right: 100%;
+}
+
