@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,64 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+//Alerta de eliminar en perfil
+.delete-alert .alert-wrapper {
+  background: #121212;
+}
+.delete-alert .alert-wrapper h2 {
+  animation: second_color 0.5s ease-in-out infinite alternate;
+  color: #fff;
+}
+
+.delete-alert .boton-eliminar {
+  animation: second_color 0.5s ease-in-out infinite alternate;
+  color: #fff;
+}
+
+.delete-alert .alert-wrapper .alert-message {
+  color: white;
+}
+
+@keyframes second_color {
+  0% {
+    border-radius: 0 0 10px #ff1177, 0 0 20px #d6249f, 0 0 30px #285aeb;
+  }
+  100% {
+    border-radius: 0 0 5px #ff1177, 0 0 10px #d6249f, 0 0 15px #285aeb;
+  }
+}
+
+//Alerta de modificar en perfil
+
+.modify-alert .alert-wrapper {
+  background: #121212;
+}
+
+.modify-alert .alert-wrapper h2 {
+  color: white;
+  animation: first_color 0.5s ease-in-out infinite alternate;
+}
+
+.modify-alert .boton-modificar {
+  animation: first_color 0.5s ease-in-out infinite alternate;
+  color: #fff;
+}
+
+.modify-alert .alert-wrapper .alert-message{
+    color: white;
+}
+
+.modify-alert .alert-wrapper .alert-input {
+    color: white;
+}
+@keyframes first_color {
+    0%{
+      text-shadow: 0 0 10px #ff1177,
+        0 0 20px #d6249f, 0 0 30px #285AEB
+    }
+    100%{
+      text-shadow: 0 0 5px #ff1177,
+        0 0 10px #d6249f, 0 0 15px #285AEB;
+    }
+}

@@ -62,10 +62,19 @@
         <ion-row>
           <ion-text>{{user.correo}}</ion-text>
         </ion-row>
+        <ion-row id="buttons">
+          <ion-button color="dark" (click)="updateUser()">
+            <i class="ri-settings-4-line icon"></i>
+          </ion-button>
+          <ion-button color="dark" (click)="deleteUser()">
+            <i class="ri-delete-bin-line icon trash"></i>
+          </ion-button>
+        </ion-row>
         <ion-row>
           <h5 id="link">Cambiar contrasenia</h5>
         </ion-row>
       </ion-col>
     </ion-row>
   </ion-grid>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </ion-content>

@@ -1,4 +1,4 @@
-export interface User {
+export interface IUser {
     id:string,
     p_nombre:string,
     s_nombre:string,

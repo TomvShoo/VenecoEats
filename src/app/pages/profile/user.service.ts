@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { User } from './user.model';
+import { Injectable, platformCore } from '@angular/core';
+import { IUser } from './user.model';
 
 
 @Injectable({
@@ -7,7 +7,7 @@ import { User } from './user.model';
 })
 export class UserService {
 
-  private user: User[] = [
+  private user: IUser[] = [
     {
       id: '1',
       p_nombre: 'Juan',
@@ -31,5 +31,14 @@ export class UserService {
         return user.id === userId
       })
     }
+  }
+
+  updateUser(newData:IUser, userId:string) { 
+  }
+
+  deleteUser(userId:string) {
+    this.user = this.user.filter(user => {
+      return user.id !== userId    
+    })
   }
 }
