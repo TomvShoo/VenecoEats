@@ -1,87 +1,181 @@
-#foto {
-  border: solid 0.5px;
-  width: 130px;
-  height: 130px;
-  margin-top: 10%;
-  margin-left: 10%;
+.container{
+  position: relative;
+  margin: 0px auto;
+  max-width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 10px 5px #c0c0c0;
+  overflow: hidden;
 }
 
-#NR {
+.top {
+  height: 40%;
+  padding: 5px;
+  background-image: url(https://ichef.bbci.co.uk/news/976/cpsprodpb/14C7A/production/_113841158_hi061514685.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  padding: 5px 0;
+  background-color: rgba(30, 87, 70, 0.8);
+}
+
+.header {
+  position: relative;
+  display: -webkit-flex;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  margin-top: 8%;
-  margin-right: 10%;
+  -webkit-justify-content:space-between;
+  justify-content:space-between ;
+  width: 100%;
+  padding: 5px 0;
+  color: #f8f8f8;
+  background-color: transparent;
+  font-family: Roboto, sans-serif;
+  text-transform: uppercase;
 }
 
-#NR ion-text {
-  text-decoration: underline;
-  font-size: large;
+.title {
+  font-size: .7em;
+  font-weight: 600;
+  letter-spacing: .1em;
+  padding-top: 5px;
 }
 
-ion-label {
-  font-weight: bold;
-}
-
-#rutL {
-  margin-top: 10%;
-}
-
-#datos {
-  margin-top: 6%;
-  margin-left: 5%;
-  padding: 0;
-}
-
-#datos ion-text {
-  margin-top: 4%;
-  margin-bottom: 4%;
-  text-decoration: underline;
-  font-size: large;
-}
-
-#link {
-  text-decoration: underline;
-  color: aqua;
-  margin-top: 50%;
-}
-
-#buttons {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  margin-right: 10%;
-}
-
-/*Me vuelvo loco gente*/
 .icon {
-  color: #fff;
-  animation: first_color 0.5s ease-in-out infinite alternate;
-  font-size: 25px;
+  font-size: 1.2em;
+  padding: 0 10px;
 }
 
-.trash {
-  animation-name: second_color;
+.date {
+  display: inline-block;
+  position: absolute;
+  right: -30px;
+  bottom: 80px;
+  color: #f8f8f8;
+  font-size: .7em;
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  -webkit-transform: rotateZ(-90deg);
+  transform: rotateZ(-90deg);
 }
 
-@keyframes first_color {
-  0% {
-    text-shadow: 0 0 10px #1877f2, 0 0 20px #1459b3, 0 0 30px #179bff;
-  }
-  100% {
-    text-shadow: 0 0 5px #1877f2, 0 0 10px #1459b3, 0 0 15px #179bff;
-  }
+.bottom {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  background-color: #3e4a6f;
 }
 
-@keyframes second_color {
-  0% {
-    text-shadow: 0 0 10px #ff1177, 0 0 20px #d6249f, 0 0 30px #285aeb;
-  }
-  100% {
-    text-shadow: 0 0 5px #ff1177, 0 0 10px #d6249f, 0 0 15px #285aeb;
-  }
+.bottom::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: rgb(5, 131, 85);
+}
+
+.profile {
+  position: absolute;
+  top: -43px;
+  width: 100%;
+  color: #f8f8f8;
+  padding: 10px;
+}
+
+.image{
+  width: 60px;
+  height: 60px;
+  padding: 5px;
+
+  background-image: url(https://ichef.bbci.co.uk/news/976/cpsprodpb/14C7A/production/_113841158_hi061514685.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 50%;
+  border: 2px solid #f8f8f8;
+  float: left;
+  margin: 0 5px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .12),0 10px 20px 0 rgba(0, 0, 0, .16);
+}
+
+.status {
+  padding: 10px 0;
+}
+
+.name {
+  text-transform: uppercase;
+  font-family: Roboto, sans-serif;
+  font-size: .75em;
+  font-weight: 600;
+}
+
+.name::before {
+  content: "";
+  position: absolute;
+  margin-left: 115px;
+  width: 6px;
+  height: 6px;
+  background-color: #ccff90;
+  border-radius: 50%;
+}
+
+.paragraphe {
+  color: #e0e0e0;
+  font-size: .8em;
+  padding: 20px;
+}
+
+.list {
+  position: relative;
+  top: 40px;
+  width: 100%;
+  padding: 10px;
+}
+
+.list-item{
+  margin: 15px 0;
+}
+
+.left-icon {
+  position: relative;
+  top: -10px;
+  width: 10%;
+  display: inline-block;
+  color: rgba(27, 226, 166, 0.8);
+  font-size: 1.2em;
+}
+
+.list-right{
+  color: #f8f8f8;
+  width: 80%;
+  display: inline-block;
+  border-bottom: 2px solid rgba(150, 150, 150, .2);
+  padding-bottom: 20px;
+}
+
+.list-title::after {
+  content: '';
+  position: absolute;
+  right: 30px;
+  font-size: 1.3em;
+  font-weight: 400;
+}
+
+.list-title{
+  font-size: .8em;
+  font-weight: 400;
+  font-family: Roboto, sans-serif;
+}
+
+.subhead {
+  font-size: .8em;
+  color: #d0d0d0;
 }

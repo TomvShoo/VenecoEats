@@ -55,7 +55,7 @@ export class ProfilePage implements OnInit {
     this.alertCtrl.create({
       header: 'Modificar Datos',
       cssClass:'modify-alert',
-      message:'En esta ventana podras modificar los datos que desees',
+      message:'En esta ventana podras modificar los datos que desees.',
       inputs: [
         {
           name: 'direccion',
@@ -100,12 +100,13 @@ export class ProfilePage implements OnInit {
 
             //sustituir por metodo luego que aclaremos lo de la db
             console.log(newData);
-                     
+          
           },
         },
         {
           text:'Cancelar',
-          role:'cancel'
+          role:'cancel',
+          cssClass:'cancelar-modificar'
         }
       ],
     }).then((alert) => alert.present());

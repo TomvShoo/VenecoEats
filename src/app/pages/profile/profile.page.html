@@ -8,73 +8,85 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <!--Imagen Y Rut-->
-    <ion-row>
-      <ion-col>
-        <ion-img id="foto" src="https://i.pinimg.com/custom_covers/222x/85498161615209203_1636332751.jpg"></ion-img>
-      </ion-col>
-      <ion-col class="ion-align-self-center" id="NR">
-        <ion-row>
-          <ion-label floating>Nombre:</ion-label>  
-        </ion-row>
-        <ion-row>
-          <ion-text>{{user.p_nombre}} {{user.s_nombre}} {{user.apellido_p}} {{user.apellido_m}}</ion-text>
-        </ion-row>
-        <ion-row id="rutL">
-          <ion-label floating>Rut:</ion-label>              
-        </ion-row>
-        <ion-row>
-          <ion-text>{{user.rut}}</ion-text>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <!---Direccion hasta Correo-->
-    <ion-row>
-      <ion-col size="12" id="datos">
-        <ion-row>
-          <ion-label floating>Direccion:</ion-label>
-        </ion-row>
-        <ion-row>
-          <ion-text>{{user.direccion}}</ion-text>
-        </ion-row>
-        <ion-row>
-          <ion-label floating>Nacionalidad:</ion-label>
-        </ion-row>
-        <ion-row>
-          <ion-text>{{user.nacionalidad}}</ion-text>
-        </ion-row>
-        <ion-row>
-          <ion-label floating>Sexo:</ion-label>
-        </ion-row>
-        <ion-row>
-          <ion-text>{{user.sexo}}</ion-text>
-        </ion-row>
-        <ion-row>
-          <ion-label floating>Fecha de nacimiento:</ion-label>
-        </ion-row>
-        <ion-row>
-          <ion-text>{{user.fecha_nac}}</ion-text>
-        </ion-row>
-        <ion-row>
-          <ion-label floating>Correo:</ion-label>
-        </ion-row>
-        <ion-row>
-          <ion-text>{{user.correo}}</ion-text>
-        </ion-row>
-        <ion-row id="buttons">
-          <ion-button color="dark" (click)="updateUser()">
-            <i class="ri-settings-4-line icon"></i>
-          </ion-button>
-          <ion-button color="dark" (click)="deleteUser()">
-            <i class="ri-delete-bin-line icon trash"></i>
-          </ion-button>
-        </ion-row>
-        <ion-row>
-          <h5 id="link">Cambiar contrasenia</h5>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <div class="container">
+    <div class="top">
+      <div class="front">
+        <div class="header">
+          <div class="icon">
+            <i class="ri-settings-2-line" (click)="updateUser()"></i>
+          </div>
+          <div class="title">Driver</div>
+          <div class="icon">
+            <i class="ri-delete-bin-line" (click)="deleteUser()"></i>
+          </div>
+        </div>
+        <div class="date">Junio, 21, 2021</div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="profile">
+        <div class="image"></div>
+        <div class="status">
+          <div class="name">
+            {{user.p_nombre}} {{user.s_nombre}} {{user.apellido_p}}
+            {{user.apellido_m}}
+          </div>
+          <div class="paragraphe">
+            <i>{{user.rut}}</i>
+          </div>
+        </div>
+      </div>
+      <div class="list">
+        <div class="list-item">
+          <div class="left-icon">
+            <i class="ri-treasure-map-line"></i>
+          </div>
+          <div class="list-right">
+            <div class="list-title">Direccion:</div>
+            <div class="subhead">{{user.direccion}}</div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="left-icon">
+            <i class="ri-flag-line"></i>
+          </div>
+          <div class="list-right">
+            <div class="list-title">Nacionalidad:</div>
+            <div class="subhead">{{user.nacionalidad}}</div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="left-icon">
+            <i class="ri-men-line"></i>
+          </div>
+          <div class="list-right">
+            <div class="list-title">Sexo:</div>
+            <div class="subhead">{{user.sexo}}</div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="left-icon">
+            <i class="ri-calendar-line"></i>
+          </div>
+          <div class="list-right">
+            <div class="list-title">Fecha nacimiento:</div>
+            <div class="subhead">{{user.fecha_nac}}</div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="left-icon">
+            <i class="ri-mail-line"></i>
+          </div>
+          <div class="list-right">
+            <div class="list-title">Correo:</div>
+            <div class="subhead">{{user.correo}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
 </ion-content>
