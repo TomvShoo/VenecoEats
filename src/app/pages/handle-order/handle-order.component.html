@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true">
+  <ion-modal
+  #modal
+  trigger="open-modal"
+  [isOpen]="true"
+  [initialBreakpoint]="0.20"
+  [breakpoints]="[0.20]"
+  [backdropDismiss]="false"
+  [backdropBreakpoint]="0.5"
+>
+  <ng-template>
+    <ion-content>
+      <div class="order-card">
+        <ion-text>
+          <h2>¿Desea aceptar el pedido?</h2>
+        </ion-text>
+        
+        <div class="button-container">
+          <button class="cancel-button"><ion-text>Rechazar</ion-text></button>
+          <button class="accept-button"><ion-text>Aceptar</ion-text></button>
+        </div>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+</ion-content>
