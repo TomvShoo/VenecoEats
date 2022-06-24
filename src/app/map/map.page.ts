@@ -27,43 +27,33 @@ export class MapPage implements OnInit {
   points: MyPoint[] = [
     {
       position: {
-        lat: -17.386378,
-        lng: -66.1628018,
+        lat: null,
+        lng: null,
       },
-      title: 'Parque De la Familia',
+      title: 'Ver pedido',
       image:
         'https://lh5.googleusercontent.com/p/AF1QipOCgzq_0DYB9AxD-ItTG01x2csLsSfWsawBCypc=w408-h306-k-no',
       text: 'Animi voluptatem, aliquid impedit ratione placeat necessitatibus quisquam molestiae obcaecati laudantium?',
     },
     {
       position: {
-        lat: -17.4005556,
-        lng: -66.1741667,
+        lat: -33.593272348076816,
+        lng: -70.7058866272739,
+      },
+      title: 'McDonalds San Bernardo',
+      image:
+        'https://lh5.googleusercontent.com/p/AF1QipOCgzq_0DYB9AxD-ItTG01x2csLsSfWsawBCypc=w408-h306-k-no',
+      text: 'Animi voluptatem, aliquid impedit ratione placeat necessitatibus quisquam molestiae obcaecati laudantium?',
+    },
+    {
+      position: {
+        lat: -33.60625792844903,
+        lng: -70.68601806268747,
       },
 
-      title: 'Mariscal Santa Cruz',
+      title: 'Destino pedido',
       image:
         'https://lh5.googleusercontent.com/p/AF1QipMGZeu88O8uZvFOX9PKug7gz-VRhhiXQ78hAFZU=w408-h306-k-no',
-      text: 'Animi voluptatem, aliquid impedit ratione placeat necessitatibus quisquam molestiae obcaecati laudantium?',
-    },
-    {
-      position: {
-        lat: -17.3810618,
-        lng: -66.1550974,
-      },
-      title: 'Parque de Educación Vial',
-      image:
-        'https://lh5.googleusercontent.com/p/AF1QipPIXxrXfshAD6eHbkGScPdNqYBwfJ6ol4qriq2n=w408-h306-k-no',
-      text: 'Animi voluptatem, aliquid impedit ratione placeat necessitatibus quisquam molestiae obcaecati laudantium?',
-    },
-    {
-      position: {
-        lat: -17.4128145,
-        lng: -66.158299,
-      },
-      title: 'Parque Kanata',
-      image:
-        'https://lh5.googleusercontent.com/p/AF1QipOJOq3vm1Gfpa3d4dPR_ca2C240J_PBv701zRAE=w408-h544-k-no',
       text: 'Animi voluptatem, aliquid impedit ratione placeat necessitatibus quisquam molestiae obcaecati laudantium?',
     },
   ];
