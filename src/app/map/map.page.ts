@@ -31,9 +31,8 @@ export class MapPage implements OnInit {
         lng: null,
       },
       title: 'Ver pedido',
-      image:
-        'https://lh5.googleusercontent.com/p/AF1QipOCgzq_0DYB9AxD-ItTG01x2csLsSfWsawBCypc=w408-h306-k-no',
-      text: 'Animi voluptatem, aliquid impedit ratione placeat necessitatibus quisquam molestiae obcaecati laudantium?',
+      image: 'https://cdn-icons-png.flaticon.com/512/857/857681.png',  
+      text: 'Deslize para ver retiro del pedido y lugar de despacho',
     },
     {
       position: {
@@ -42,7 +41,7 @@ export class MapPage implements OnInit {
       },
       title: 'McDonalds San Bernardo',
       image:
-        'https://lh5.googleusercontent.com/p/AF1QipOCgzq_0DYB9AxD-ItTG01x2csLsSfWsawBCypc=w408-h306-k-no',
+        'https://cdn-icons-png.flaticon.com/512/1996/1996068.png',
       text: 'Animi voluptatem, aliquid impedit ratione placeat necessitatibus quisquam molestiae obcaecati laudantium?',
     },
     {
@@ -53,7 +52,7 @@ export class MapPage implements OnInit {
 
       title: 'Destino pedido',
       image:
-        'https://lh5.googleusercontent.com/p/AF1QipMGZeu88O8uZvFOX9PKug7gz-VRhhiXQ78hAFZU=w408-h306-k-no',
+        'https://img2.freepng.es/20180503/auq/kisspng-computer-icons-motorcycle-logistics-delivery-couri-5aeb7391dc71f4.779408461525379985903.jpg',
       text: 'Animi voluptatem, aliquid impedit ratione placeat necessitatibus quisquam molestiae obcaecati laudantium?',
     },
   ];

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>map</ion-title>
+    <ion-title>Veneco Eats</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -16,6 +16,7 @@
     >
     </map-marker>
   </google-map>
+  
   <ion-slides (ionSlideDidChange)="onSlideDidChange()">
     <ion-slide *ngFor="let point of points">
       <ion-card>
@@ -31,4 +32,5 @@
       </ion-card>
     </ion-slide>
   </ion-slides>
+  
 </ion-content>
