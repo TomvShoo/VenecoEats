@@ -29,7 +29,7 @@ export class ChatPage implements OnInit {
   }
 
   signOut() {
-    this.chatService.signOut().then(() => {
+    this.chatService.deleteCollection().then(() => {
       this.router.navigateByUrl('/', { replaceUrl: true });
     });
   }

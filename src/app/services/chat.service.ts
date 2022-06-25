@@ -6,7 +6,7 @@ import * as firebaseui from 'firebaseui';
 import { switchMap, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { user } from '@angular/fire/auth';
-import { signInWithPhoneNumber, getAuth, RecaptchaVerifier } from 'firebase/auth';
+import { signInWithPhoneNumber, getAuth, RecaptchaVerifier, setPersistence } from 'firebase/auth';
 
 
 export interface User {
@@ -56,6 +56,18 @@ export class ChatService {
   }
 
   signOut(): Promise<void> {
+    return this.afAuth.signOut();
+  }
+
+  // deleteDoc(): Promise<void> {
+  //   this.afs.collection('messages').doc("5TaagGDQNcS9R7nNzQ7n").delete();
+  //   return
+  // }
+
+  deleteCollection(): Promise<void> {
+    this.afs.collection('messages').get().toPromise().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => doc.ref.delete())
+    });
     return this.afAuth.signOut();
   }
 
