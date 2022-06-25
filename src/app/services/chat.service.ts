@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat/app';
-import * as firebaseui from 'firebaseui';
 import { switchMap, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { user } from '@angular/fire/auth';
-import { signInWithPhoneNumber, getAuth, RecaptchaVerifier, setPersistence } from 'firebase/auth';
+import { from, Observable } from 'rxjs';
+import { Auth } from '@angular/fire/auth';
+import { auth } from 'firebaseui';
+import { GoogleAuthProvider } from '@angular/fire/auth';
 
 
 export interface User {
@@ -50,6 +50,21 @@ export class ChatService {
       email: credential.user.email,
     })
   }
+
+  async signUpGoogle({ }): Promise<any> {
+    var provider = new firebase.auth.GoogleAuthProvider;
+    const credential = await this.afAuth.signInWithPopup(provider);
+
+    const uid = credential.user.uid;
+
+    return this.afs.doc(
+      `users/${uid}`
+    ).set({
+      uid,
+      email: credential.user.email,
+    })
+  }
+
 
   signIn({ email, password }) {
     return this.afAuth.signInWithEmailAndPassword(email, password);

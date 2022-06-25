@@ -3,6 +3,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ChatService } from '../../services/chat.service';
+import { Auth } from '@angular/fire/auth';
+import { from } from 'rxjs';
+import { async } from '@angular/core/testing';
+
+
 
 @Component({
   selector: 'app-login',
@@ -50,6 +55,29 @@ export class LoginPage implements OnInit {
       );
   }
 
+  async signUpGoogle() {
+    const loading = await this.loadingController.create();
+    await loading.present();
+    this.chatService
+      .signUpGoogle(this.credentialForm.value)
+      .then(
+        (user) => {
+          loading.dismiss();
+          this.router.navigateByUrl('/chat', { replaceUrl: true });
+        },
+        async (err) => {
+          loading.dismiss();
+          const alert = await this.alertController.create({
+            header: 'Sign up failed',
+            message: err.message,
+            buttons: ['OK'],
+          });
+
+          await alert.present();
+        }
+      )
+  }
+
   async signIn() {
     const loading = await this.loadingController.create();
     await loading.present();
@@ -72,6 +100,10 @@ export class LoginPage implements OnInit {
           await alert.present();
         }
       );
+  }
+
+  async signInGoogle() {
+
   }
 
   // Easy access for form fields

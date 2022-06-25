@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
+import { LoginPage } from './pages/login/login.page';
 
 const redirectUnauthorizedToLogin = () =>
   redirectUnauthorizedTo(['/']);
