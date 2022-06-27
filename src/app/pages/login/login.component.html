@@ -24,7 +24,7 @@
                 </ion-row>
                 <ion-row>
                     <ion-col>
-                        <ion-input class="numeroTelefono" type="text" placeholder=" Contraseña"></ion-input>
+                        <ion-input class="numeroTelefono" type="password" placeholder=" Contraseña"></ion-input>
                     </ion-col>
                 </ion-row>
                 <ion-row>
@@ -36,6 +36,11 @@
                     </ion-col>
                 </ion-row>
             </form>
+            <div>
+                <div class="center">
+                    <ion-button class="signUp" expand="full" shape="round">Registrarse</ion-button>
+                </div>
+            </div>
             
             <!-- <ion-row>
                 <ion-col>
@@ -64,38 +69,10 @@
             </ion-row>
             <ion-row>
                 <ion-col>
-                    <ion-button (click)="forma = !forma" class="boton-correo" expand="full" color="secondary" shape="round">
+                    <ion-button class="boton-correo" expand="full" color="secondary" shape="round">
                         <ion-icon slot="start" name="mail-outline"></ion-icon>
                         Continuar con Correo Electronico
                     </ion-button>
-                    <div id="form" *ngIf="forma">
-                        <form [formGroup]="credentialForm">
-                            <ion-item>
-                                <ion-input placeholder="Correo Electronico" formControlName="email" autofocus="true"
-                                    clearInput="true">
-                                </ion-input>
-                            </ion-item>
-                            <div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
-                                <span *ngIf="email.errors?.required">El correo electronico es requerido</span>
-                                <span *ngIf="email.errors?.email">El correo es invalido</span>
-                            </div>
-                            <ion-item>
-                                <ion-input placeholder="Contraseña" type="password" formControlName="password"
-                                    clearInput="true">
-                                </ion-input>
-                            </ion-item>
-                            <div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
-                                <span *ngIf="password.errors?.required">La contraseña es requerida</span>
-                                <span *ngIf="password.errors?.minlength">La contraseña necesita un minimo de 6
-                                    caracteres</span>
-                            </div>
-                        </form>
-                        <div class="center">
-                            <ion-button class="signUp" (click)="signUp()" expand="round">Registrarse</ion-button>
-                            <ion-button class="signIn" (click)="signIn()" expand="round" color="secondary">Ingresar
-                            </ion-button>
-                        </div>
-                    </div>
                     <ion-button class="boton-facebook" expand="full" color="tertiary" href="" shape="round">
                         <ion-icon slot="start" name="logo-facebook"></ion-icon>
                         Continuar con Facebook
@@ -103,7 +80,7 @@
                     <ion-button class="boton-google" expand="full" color="light" href="" shape="round">
                         <ion-icon slot="start" name="logo-google"></ion-icon>
                         Continuar con Google
-                    </ion-button>
+                    </ion-button> 
                 </ion-col>
             </ion-row>
         </ion-grid>
