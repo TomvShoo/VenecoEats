@@ -6,6 +6,8 @@ import { ChatService } from '../../services/chat.service';
 import { Auth } from '@angular/fire/auth';
 import { from } from 'rxjs';
 import { async } from '@angular/core/testing';
+import firebase from 'firebase/compat/app';
+
 
 
 
@@ -16,13 +18,17 @@ import { async } from '@angular/core/testing';
 })
 export class LoginPage implements OnInit {
   credentialForm: FormGroup;
+  otpSent: boolean = false;
+  appVerifier;
+  otpConfirmation: firebase.auth.ConfirmationResult;
+  pNumber: string = "";
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private alertController: AlertController,
     private loadingController: LoadingController,
-    private chatService: ChatService
+    private chatService: ChatService,
   ) { }
 
   ngOnInit() {
@@ -30,6 +36,15 @@ export class LoginPage implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
+  }
+
+
+  viewDidEnter() {
+    this.appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', { 'size': 'invisible' })
+  }
+
+  viewLoad() {
+    this.appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', { 'size': 'invisible' })
   }
 
   async signUp() {
@@ -101,11 +116,6 @@ export class LoginPage implements OnInit {
         }
       );
   }
-
-  async signInGoogle() {
-
-  }
-
   // Easy access for form fields
   get email() {
     return this.credentialForm.get('email');

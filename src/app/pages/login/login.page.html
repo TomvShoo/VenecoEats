@@ -10,26 +10,19 @@
 
   <div class="container-fluid">
     <ion-grid>
-      <form (ngSubmit)="ingreso()">
+      <form>
         <ion-row class="inicioSesion">
           <ion-img id="flag"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Flag_of_Chile_%281818-1854%29.svg/220px-Flag_of_Chile_%281818-1854%29.svg.png">
           </ion-img>
-          <ion-input class="numeroTelefono" type="text" placeholder=" Numero telefonico">+56</ion-input>
+          <ion-input *ngIf="!otpSent" class="numeroTelefono" type="text" placeholder=" Numero telefonico">+56
+          </ion-input>
+          <ion-input id="pnumber" *ngIf="otpSent" class="numeroTelefono" type="number" placehoder="1234"></ion-input>
+          <div id="recaptcha-container" style="display:none"></div>
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-input class="numeroTelefono" type="text" placeholder=" Correo electronico"></ion-input>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-input class="numeroTelefono" type="text" placeholder=" Contraseña"></ion-input>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-button expand="full" shape="round" color="dark" type="submit">
+            <ion-button (click)="sendOTP()" expand="full" shape="round" color="dark" type="submit">
               Continuar
               <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
             </ion-button>
