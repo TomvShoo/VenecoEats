@@ -20,30 +20,30 @@
             <i class="ri-delete-bin-line" (click)="deleteUser()"></i>
           </div>
         </div>
-        <div class="date">Junio, 21, 2021</div>
+        <div class="date">{{now}}</div>
       </div>
     </div>
     <div class="bottom">
       <div class="profile">
-        <div class="image"></div>
+        <div class="image" id="img"></div>
         <div class="status">
           <div class="name">
-            {{user.p_nombre}} {{user.s_nombre}} {{user.apellido_p}}
-            {{user.apellido_m}}
+            {{userInfo.p_nombre}} {{userInfo.s_nombre}} {{userInfo.p_apellido}}
+            {{userInfo.s_apellido}}
           </div>
           <div class="paragraphe">
-            <i>{{user.rut}}</i>
+            <i id="estado">{{setEstado}}</i>
           </div>
         </div>
       </div>
       <div class="list">
         <div class="list-item">
           <div class="left-icon">
-            <i class="ri-treasure-map-line"></i>
+            <i class="ri-fingerprint-2-line"></i>
           </div>
           <div class="list-right">
-            <div class="list-title">Direccion:</div>
-            <div class="subhead">{{user.direccion}}</div>
+            <div class="list-title">Rut:</div>
+            <div class="subhead">{{userInfo.Rut_Rep}}</div>
           </div>
         </div>
         <div class="list-item">
@@ -52,7 +52,7 @@
           </div>
           <div class="list-right">
             <div class="list-title">Nacionalidad:</div>
-            <div class="subhead">{{user.nacionalidad}}</div>
+            <div class="subhead">{{userInfo.Nacionalidad}}</div>
           </div>
         </div>
         <div class="list-item">
@@ -60,17 +60,8 @@
             <i class="ri-men-line"></i>
           </div>
           <div class="list-right">
-            <div class="list-title">Sexo:</div>
-            <div class="subhead">{{user.sexo}}</div>
-          </div>
-        </div>
-        <div class="list-item">
-          <div class="left-icon">
-            <i class="ri-calendar-line"></i>
-          </div>
-          <div class="list-right">
-            <div class="list-title">Fecha nacimiento:</div>
-            <div class="subhead">{{user.fecha_nac}}</div>
+            <div class="list-title">Genero:</div>
+            <div class="subhead">{{userInfo.Genero}}</div>
           </div>
         </div>
         <div class="list-item">
@@ -79,7 +70,7 @@
           </div>
           <div class="list-right">
             <div class="list-title">Correo:</div>
-            <div class="subhead">{{user.correo}}</div>
+            <div class="subhead">{{userInfo.Correo}}</div>
           </div>
         </div>
       </div>
