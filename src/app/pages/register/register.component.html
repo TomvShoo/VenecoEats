@@ -1,9 +1,9 @@
 <ion-content>
   <ion-grid>
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
       <!-- Inicio formulario 1 -->
-      <div class="formularioUno">
+      <!-- <div class="formularioUno">
         <ion-row class="filaFondo">
           <ion-col size="12" class="registerBackground">
             <img src="./../../../assets/images/fondoComida.jpeg" alt="">
@@ -11,7 +11,7 @@
         </ion-row>
         <ion-row class="campo">
           <ion-col size="10">
-            <ion-input class="inputs" formControlName="telefono"></ion-input>
+            <ion-input type="number" class="inputs" formControlName="telefono"></ion-input>
           </ion-col>
         </ion-row>
 
@@ -23,7 +23,7 @@
             <ion-button (click)="sigPagina('formularioUno')">Siguiente</ion-button>
           </ion-col>
         </ion-row>
-      </div>
+      </div> -->
       <!-- Fin formulario 1 -->
 
       <!-- Inicio formulario 2 -->
@@ -68,48 +68,48 @@
       <!-- Fin formulario 2 -->
 
       <!-- Inicio formulario 3 -->
-      <div class="formularioTres oculta">
+      <div class="formularioTres">
 
         <div class="datosUsuario">
           <ion-row>
             <ion-col size="11">
               <label for="">Rut</label>
-              <ion-input class="inputs" type="text" formControlName="rut" placeholder="Awesome Input"></ion-input>
+              <ion-input class="inputs" type="text" formControlName="rut"></ion-input>
             </ion-col>
           </ion-row>
 
           <ion-row>
             <ion-col size="11">
               <label for="">Primer Nombre</label>
-              <ion-input class="inputs" type="text" formControlName="nombreP" placeholder="Awesome Input"></ion-input>
+              <ion-input class="inputs" type="text" formControlName="nombreP"></ion-input>
             </ion-col>
           </ion-row>
 
           <ion-row>
             <ion-col size="11">
               <label for="">Segundo Nombre</label>
-              <ion-input class="inputs" type="text" formControlName="nombreS" placeholder="Awesome Input"></ion-input>
+              <ion-input class="inputs" type="text" formControlName="nombreS"></ion-input>
             </ion-col>
           </ion-row>
 
           <ion-row>
             <ion-col size="11">
               <label for="">Apellido Paterno</label>
-              <ion-input class="inputs" type="text" formControlName="apellidoP" placeholder="Awesome Input"></ion-input>
+              <ion-input class="inputs" type="text" formControlName="apellidoP"></ion-input>
             </ion-col>
           </ion-row>
 
           <ion-row>
             <ion-col size="11">
               <label for="">Apellido Materno</label>
-              <ion-input class="inputs" type="text" formControlName="apellidoM" placeholder="Awesome Input"></ion-input>
+              <ion-input class="inputs" type="text" formControlName="apellidoM"></ion-input>
             </ion-col>
           </ion-row>
 
           <ion-row>
             <ion-col size="11">
               <label for="">Sexo</label>
-              <ion-input class="inputs" type="text" formControlName="sexo" placeholder="Awesome Input"></ion-input>
+              <ion-input class="inputs" type="text" formControlName="sexo"></ion-input>
             </ion-col>
           </ion-row>
 
@@ -118,7 +118,7 @@
             <ion-col size="11">
               <ion-item>
                 <ion-label>Date</ion-label>
-                <ion-datetime display-format="MM.DD.YYYY HH:mm"></ion-datetime>
+                <ion-datetime formControlName="fechaNacimiento" display-format="YYYY-MM-DD"></ion-datetime>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -128,10 +128,10 @@
               <label for="">Nacionalidad</label>
               <ion-item>
                 <ion-select class="inputs" formControlName="nacionalidad">
-                  <ion-select-option value="brown">Veneco</ion-select-option>
-                  <ion-select-option value="blonde">Colombiano</ion-select-option>
-                  <ion-select-option value="black">Peruano</ion-select-option>
-                  <ion-select-option value="red">Boliviano</ion-select-option>
+                  <ion-select-option value="venezolano">Veneco</ion-select-option>
+                  <ion-select-option value="colombiano">Colombiano</ion-select-option>
+                  <ion-select-option value="peruano">Peruano</ion-select-option>
+                  <ion-select-option value="boliviano">Boliviano</ion-select-option>
                 </ion-select>
               </ion-item>
             </ion-col>
@@ -140,7 +140,7 @@
           <ion-row>
             <ion-col size="11">
               <label for="">Correo</label>
-              <ion-input class="inputs" type="text" formControlName="correo" placeholder="Awesome Input"></ion-input>
+              <ion-input class="inputs" type="text" formControlName="correo"></ion-input>
             </ion-col>
           </ion-row>
 
@@ -175,7 +175,7 @@
             </ion-input>
           </ion-col>
           <ion-col size="2" class="mostrarContraseñaCampo">
-            <ion-icon class="mostrarContraseña" name="eye"></ion-icon>
+            <ion-icon class="mostrarContraseña" (click)="mostrarFecha()" name="eye"></ion-icon>
           </ion-col>
         </ion-row>
 
@@ -183,8 +183,8 @@
           <ion-col size="5" offset="1" class="col-center ">
             <ion-button expand="block"  (click)="antPagina('formularioCuatro')">Default</ion-button>
           </ion-col>
-          <ion-col size="5" offset="1" class="col-center ">
-            <ion-button expand="block" >Registrarse</ion-button>
+          <ion-col size="5" offset="1" class="col-center">
+            <ion-button expand="block" type="submit" >Registrarse</ion-button>
           </ion-col>
         </ion-row>
       </div>

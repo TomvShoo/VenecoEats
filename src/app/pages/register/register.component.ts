@@ -17,17 +17,22 @@ export class RegisterComponent implements OnInit {
     apellidoP: new FormControl('', Validators.required),
     apellidoM: new FormControl('', Validators.required),
     sexo: new FormControl('',Validators.required),
-    fechaNacimiento: new FormControl(Date(),Validators.required),
+    fechaNacimiento: new FormControl('',Validators.required),
     nacionalidad: new FormControl('',Validators.required),
     correo: new FormControl('',Validators.required),
     contrasenia: new FormControl('', Validators.required),
-    telefono: new FormControl(0,Validators.required)
+    // telefono: new FormControl('',Validators.required)
   })
 
   constructor() { }
 
   ngOnInit() {
-    console.log(Date()); 
+    console.log(Date());
+    console.log();
+  }
+
+  public mostrarFecha(){
+    console.log(this.registerForm.value.fechaNacimiento);
   }
 
   public sigPagina(clase:string){
@@ -64,5 +69,10 @@ export class RegisterComponent implements OnInit {
     }
 
     pagina.className = pagina.className + " oculta"
+  }
+
+  public onSubmit(){
+    console.log(this.registerForm.value);
+    
   }
 }
