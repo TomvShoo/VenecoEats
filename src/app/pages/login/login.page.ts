@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ClienteService } from 'src/app/services/cliente.service';
+import { IClient } from 'src/app/services/ICliente';
 import { Router } from '@angular/router';
-import { AlertController, LoadingController } from '@ionic/angular';
-import { ChatService } from '../../services/chat.service';
-import { Auth } from '@angular/fire/auth';
-import { from } from 'rxjs';
-import { async } from '@angular/core/testing';
-import firebase from 'firebase/compat/app';
-
-
-
+import { AlertController } from '@ionic/angular'
+import { IonModal } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { pipe } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -17,115 +17,72 @@ import firebase from 'firebase/compat/app';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  @ViewChild(IonModal) modal: IonModal;
   credentialForm: FormGroup;
-  otpSent: boolean = false;
-  appVerifier;
-  otpConfirmation: firebase.auth.ConfirmationResult;
-  pNumber: string = "";
+  public client: IClient = {
+    rut: '',
+    p_nombre: '',
+    s_nombre: '',
+    p_apellido: '',
+    s_apellido: '',
+    nro_documento: '',
+    nacionalidad: '',
+    genero: '',
+    correo: '',
+    password: '',
+  };
+
+  public c_password: '';
+
+  private clientService: ClienteService;
+
 
   constructor(
     private fb: FormBuilder,
+    service: ClienteService,
     private router: Router,
-    private alertController: AlertController,
-    private loadingController: LoadingController,
-    private chatService: ChatService,
-  ) { }
+    private alertCtrl: AlertController,
+    private http: HttpClient
+  ) { this.clientService = service; }
 
-  ngOnInit() {
-    this.credentialForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+  private status: boolean = false;
+
+  sendSubmit() {
+    this.clientService.addClient(this.client).subscribe((res) => {
+      console.log(res);
     });
   }
 
-
-  viewDidEnter() {
-    this.appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', { 'size': 'invisible' })
+  ngOnInit() {
+    this.credentialForm = this.fb.group({
+      correo: [''],
+      password: [''],
+    });
   }
 
-  viewLoad() {
-    this.appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', { 'size': 'invisible' })
+  private url: string = 'https://yavoy-api.herokuapp.com/login'
+
+  async login() {
+    const user = {
+      correo: this.credentialForm.value.correo,
+      password: this.credentialForm.value.password
+    }
+    this.clientService.updateClient(user).subscribe((res) => {
+      console.log(res);
+      const rut = this.client.rut
+      localStorage.setItem('currentUser', JSON.stringify(res).substring(57, 66))
+      console.log(JSON.stringify(res))
+    })
+    this.router.navigateByUrl('/chat')
+    this.credentialForm.reset();
   }
 
-  async signUp() {
-    const loading = await this.loadingController.create();
-    await loading.present();
-    this.chatService
-      .signup(this.credentialForm.value)
-      .then(
-        (user) => {
-          loading.dismiss();
-          this.router.navigateByUrl('/chat', { replaceUrl: true });
-        },
-        async (err) => {
-          loading.dismiss();
-          const alert = await this.alertController.create({
-            header: 'Sign up failed',
-            message: err.message,
-            buttons: ['OK'],
-          });
-
-          await alert.present();
-        }
-      );
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
   }
 
-  async signUpGoogle() {
-    const loading = await this.loadingController.create();
-    await loading.present();
-    this.chatService
-      .signUpGoogle(this.credentialForm.value)
-      .then(
-        (user) => {
-          loading.dismiss();
-          this.router.navigateByUrl('/chat', { replaceUrl: true });
-        },
-        async (err) => {
-          loading.dismiss();
-          const alert = await this.alertController.create({
-            header: 'Sign up failed',
-            message: err.message,
-            buttons: ['OK'],
-          });
 
-          await alert.present();
-        }
-      )
-  }
-
-  async signIn() {
-    const loading = await this.loadingController.create();
-    await loading.present();
-
-    this.chatService
-      .signIn(this.credentialForm.value)
-      .then(
-        (res) => {
-          loading.dismiss();
-          this.router.navigateByUrl('/chat', { replaceUrl: true });
-        },
-        async (err) => {
-          loading.dismiss();
-          const alert = await this.alertController.create({
-            header: ':(',
-            message: err.message,
-            buttons: ['OK'],
-          });
-
-          await alert.present();
-        }
-      );
-  }
-  // Easy access for form fields
-  get email() {
-    return this.credentialForm.get('email');
-  }
-
-  get password() {
-    return this.credentialForm.get('password');
-  }
-
-  clicked() {
-    console.log("CLICK")
-  }
 }
+
+
+

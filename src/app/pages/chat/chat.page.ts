@@ -32,6 +32,7 @@ export class ChatPage implements OnInit {
     this.chatService.deleteCollection().then(() => {
       this.router.navigateByUrl('/', { replaceUrl: true });
     });
+    localStorage.removeItem('currentUser')
   }
 
 }

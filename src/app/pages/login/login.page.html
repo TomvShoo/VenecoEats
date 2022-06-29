@@ -1,13 +1,9 @@
 <ion-content [fullscreen]="true">
   <div class="titulo ion-no-padding">
-
     <ion-col>
-      <h2 class="ion-text-capitalize">ingresa tu numero telefonico</h2>
+      <h2 class="ion-text-capitalize">Ingresa a YaVoy</h2>
     </ion-col>
-
   </div>
-
-
   <div class="container-fluid">
     <ion-grid>
       <form>
@@ -15,18 +11,6 @@
           <ion-img id="flag"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Flag_of_Chile_%281818-1854%29.svg/220px-Flag_of_Chile_%281818-1854%29.svg.png">
           </ion-img>
-          <ion-input *ngIf="!otpSent" class="numeroTelefono" type="text" placeholder=" Numero telefonico">+56
-          </ion-input>
-          <ion-input id="pnumber" *ngIf="otpSent" class="numeroTelefono" type="number" placehoder="1234"></ion-input>
-          <div id="recaptcha-container" style="display:none"></div>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-button (click)="sendOTP()" expand="full" shape="round" color="dark" type="submit">
-              Continuar
-              <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
-            </ion-button>
-          </ion-col>
         </ion-row>
       </form>
       <ion-row>
@@ -43,33 +27,71 @@
           <div id="form" *ngIf="forma">
             <form [formGroup]="credentialForm">
               <ion-item>
-                <ion-input placeholder="Correo Electronico" formControlName="email" autofocus="true" clearInput="true">
+                <ion-input placeholder="Correo Electronico" formControlName="correo" autofocus="true" clearInput="true">
                 </ion-input>
               </ion-item>
-              <div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
-                <span *ngIf="email.errors?.required">El correo electronico es requerido</span>
-                <span *ngIf="email.errors?.email">El correo es invalido</span>
-              </div>
               <ion-item>
-                <ion-input placeholder="Contraseña" type="password" formControlName="password" clearInput="true">
+                <ion-input placeholder="Contraseña" type="password" clearInput="true" formControlName="password">
                 </ion-input>
               </ion-item>
-              <div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
-                <span *ngIf="password.errors?.required">La contraseña es requerida</span>
-                <span *ngIf="password.errors?.minlength">La contraseña necesita un minimo de 6
-                  caracteres</span>
-              </div>
             </form>
             <div class="center">
-              <ion-button class="signUp" (click)="signUp()" expand="round">Registrarse</ion-button>
-              <ion-button class="signIn" (click)="signIn()" expand="round" color="secondary">Ingresar
-              </ion-button>
+              <ion-button id="open-modal" expand="round">Registrarse</ion-button>
+              <ion-modal #modal trigger="open-modal">
+                <ng-template>
+                  <ion-content>
+                    <ion-toolbar>
+                      <h2>Registro</h2>
+                    </ion-toolbar>
+                    <ion-item>
+                      <ion-input [(ngModel)]="client.correo" placeholder="Correo Electronico" clearInput="true">
+                      </ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input [(ngModel)]="client.password" placeholder="Contraseña" type="password"
+                        clearInput="true">
+                      </ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input [(ngModel)]="client.rut" placeholder="RUT" clearInput="true">
+                      </ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input [(ngModel)]="client.p_nombre" placeholder="Primer Nombre" clearInput="true">
+                      </ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input [(ngModel)]="client.s_nombre" placeholder="Segundo Nombre" clearInput="true">
+                      </ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input [(ngModel)]="client.p_apellido" placeholder="Primer Apellido" clearInput="true">
+                      </ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input [(ngModel)]="client.s_apellido" placeholder="Segundo Apellido" clearInput="true">
+                      </ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input [(ngModel)]="client.nro_documento" placeholder="N° de Documento" clearInput="true">
+                      </ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input [(ngModel)]="client.nacionalidad" placeholder="Nacionalidad" clearInput="true">
+                      </ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input [(ngModel)]="client.genero" placeholder="Genero" clearInput="true">
+                      </ion-input>
+                    </ion-item>
+                    <ion-button expand="round" (click)="sendSubmit()">Confirmar Registro</ion-button>
+                    <ion-button expand="round" color="secondary" (click)="cancel()">Cancelar</ion-button>
+                  </ion-content>
+                </ng-template>
+              </ion-modal>
+              <ion-button class="signIn" expand="round" color="secondary" (click)="login()">Ingresar</ion-button>
             </div>
           </div>
-          <ion-button class="boton-google" expand="full" color="light" (click)="signUpGoogle()" shape="round">
-            <ion-icon slot="start" name="logo-google"></ion-icon>
-            Continuar con Google
-          </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
