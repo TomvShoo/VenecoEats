@@ -5,24 +5,19 @@ import { LoginComponent } from './pages/login/login.component';
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    component: LoginComponent,
   },
+  // prettier-ignore
   {
     path: 'perfil',
-    children:[
-      {
-        path:":userId",
-        loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
-      }
-    ]
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
-
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

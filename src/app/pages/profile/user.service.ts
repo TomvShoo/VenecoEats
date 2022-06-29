@@ -25,15 +25,11 @@ export class UserService {
     return JSON.parse(resText);
   }
 
-  updateUser(newData: IUser, userRut: string) {
-    return this.http.patch(`${this.url}?rut=${userRut}`, newData);
+  updateUser(newData: any) {
+    return this.http.patch(`${this.url}`, newData);
   }
 
   deleteUser(userRut: string) {
-    return this.http.delete<any>(`${this.url}?rut=${userRut}`).pipe(
-      map((res: any) => {
-        return res;
-      })
-    );
+    return this.http.delete(`${this.url}?rut=${userRut}`);
   }
 }

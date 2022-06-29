@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IUser } from './user.model';
 import { AlertController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
@@ -21,7 +21,8 @@ export class ProfilePage implements OnInit {
 
   constructor(
     private service: UserService,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private router: Router
   ) {}
 
   userRut: string = '202224776';
@@ -59,9 +60,10 @@ export class ProfilePage implements OnInit {
           text: 'Eliminar',
           cssClass: 'boton-eliminar',
           handler: () => {
-            this.service.deleteUser(this.userRut);
-            window.location.reload();
-            //Redireccionar luego a pagina de registro
+            this.service.deleteUser(this.user.Rut_Rep).subscribe((res) => {
+              console.log(res);
+              this.router.navigateByUrl('/');
+            });
           },
         },
         {
@@ -102,24 +104,20 @@ export class ProfilePage implements OnInit {
                 res.correo;
               }
 
-              // if (res.pass != '') {
-              //   res.pass
-              // }
-
-              var newData: IUser = {
-                id: this.user.id,
+              var newData = {
                 p_nombre: this.user.p_nombre,
                 s_nombre: this.user.s_nombre,
                 p_apellido: this.user.p_apellido,
-                m_apellido: this.user.m_apellido,
-                Rut_Rep: this.user.Rut_Rep,
-                Nacionalidad: this.user.Nacionalidad,
-                Genero: this.user.Genero,
-                Correo: res.correo,
+                s_apellido: this.user.s_apellido,
+                rut: this.user.Rut_Rep,
+                nacionalidad: this.user.Nacionalidad,
+                genero: this.user.Genero,
+                correo: res.correo,
               };
 
-              //sustituir por metodo luego que aclaremos lo de la db
-              console.log(newData);
+              this.service.updateUser(newData).subscribe((data) => {
+                this.ngOnInit();
+              });
             },
           },
           {
