@@ -44,6 +44,18 @@
     border-radius: 15px;
 }
 
+.correo {
+    border: solid 1px black;
+    background-color: #e2e3e61f;
+    border-radius: 15px;
+}
+
+.contrasena {
+    border: solid 1px black;
+    background-color: #e2e3e61f;
+    border-radius: 15px;
+}
+
 .boton-google {
     margin-top: 10px;
     border: solid 1px black;
