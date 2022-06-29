@@ -1,6 +1,6 @@
 <ion-content>
   <ion-grid>
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit($event)">
 
       <!-- Inicio formulario 1 -->
       <!-- <div class="formularioUno">
@@ -81,7 +81,7 @@
           <ion-row>
             <ion-col size="11">
               <label for="">Primer Nombre</label>
-              <ion-input class="inputs" type="text" formControlName="nombreP"></ion-input>
+              <ion-input class="inputs" type="text" formControlName="nombreP" required="true"></ion-input>
             </ion-col>
           </ion-row>
 
@@ -154,7 +154,7 @@
 
           <ion-row class="campoBotones">
             <ion-col size="5" class="col-center">
-              <ion-button (click)="antPagina('formularioTres')">Default</ion-button>
+              <ion-button (click)="antPagina('formularioTres')">Cancelar</ion-button>
             </ion-col>
             <ion-col size="5" class="col-center">
               <ion-button (click)="sigPagina('formularioTres')">Siguiente</ion-button>
@@ -179,20 +179,20 @@
         </ion-row>
         <ion-row>
           <ion-col size="10">
-            <ion-input class="inputs" type="password" formControlName="contrasenia" placeholder="Awesome Input">
+            <ion-input class="inputs" type="password" formControlName="contrasenia" required>
             </ion-input>
           </ion-col>
           <ion-col size="2" class="mostrarContraseñaCampo">
-            <ion-icon class="mostrarContraseña" (click)="mostrarFecha()" name="eye"></ion-icon>
+            <ion-icon class="mostrarContraseña" (click)="mostrarContrasenia()" name="eye"></ion-icon>
           </ion-col>
         </ion-row>
-
+        <div>{{registerForm.get("contrasenia").errors | json}}</div>
         <ion-row class="campoBotones">
           <ion-col size="5" offset="1" class="col-center ">
-            <ion-button expand="block"  (click)="antPagina('formularioCuatro')">Default</ion-button>
+            <ion-button expand="block"  (click)="antPagina('formularioCuatro')">Volver</ion-button>
           </ion-col>
           <ion-col size="5" offset="1" class="col-center">
-            <ion-button expand="block" type="submit" >Registrarse</ion-button>
+            <ion-button expand="block" type="submit" [disabled]="!registerForm.valid">Registrarse</ion-button>
           </ion-col>
         </ion-row>
       </div>

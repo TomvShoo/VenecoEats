@@ -11,9 +11,9 @@ export class RegisterComponent implements OnInit {
 
   estado_nroDocumento: boolean = false;
 
-  registerForm = new FormGroup({
-    rut: new FormControl('', Validators.required),
-    nombreP: new FormControl('', Validators.required),
+  registerForm:FormGroup = new FormGroup({
+    rut: new FormControl('', [Validators.required, Validators.maxLength(8)]),
+    nombreP: new FormControl(null, {validators:Validators.required}),
     nombreS: new FormControl(''),
     apellidoP: new FormControl('', Validators.required),
     apellidoM: new FormControl(''),
@@ -21,8 +21,8 @@ export class RegisterComponent implements OnInit {
     // fechaNacimiento: new FormControl('',Validators.required),
     nroDocumento: new FormControl(''),
     nacionalidad: new FormControl('',Validators.required),
-    correo: new FormControl('',Validators.required),
-    contrasenia: new FormControl('', Validators.required),
+    correo: new FormControl('',[Validators.required]),
+    contrasenia: new FormControl(null, Validators.required),
     // telefono: new FormControl('',Validators.required)
   })
 
@@ -32,8 +32,12 @@ export class RegisterComponent implements OnInit {
     
   }
 
-  public mostrarFecha(){
-    console.log(this.registerForm.value.fechaNacimiento);
+  // public mostrarFecha(){
+  //   console.log(this.registerForm.value.fechaNacimiento);
+  // }
+
+  public mostrarContrasenia(e){
+    console.log(e);
   }
 
   public sigPagina(clase:string){
@@ -81,7 +85,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  public onSubmit(){
+  public onSubmit(e){
     let nuevoUsuario: IUsuario = {
       rut: this.registerForm.value.rut,
       p_nombre: this.registerForm.value.nombreP,
@@ -96,9 +100,7 @@ export class RegisterComponent implements OnInit {
       passsword: this.registerForm.value.contrasenia
     };
 
-    console.log(nuevoUsuario);
-    
-
-    this.servicio.postUsuario(nuevoUsuario).subscribe(data => {return})
+    console.log(this.registerForm.valid);
+    // this.servicio.postUsuario(nuevoUsuario).subscribe(data => {return})
   }
 }
