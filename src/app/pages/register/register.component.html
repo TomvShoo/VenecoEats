@@ -113,27 +113,35 @@
             </ion-col>
           </ion-row>
 
-          <ion-row>
-            <!-- fecha de nacimiento -->
+          <!-- fecha de nacimiento -->
+          <!-- <ion-row>
             <ion-col size="11">
               <ion-item>
                 <ion-label>Date</ion-label>
                 <ion-datetime formControlName="fechaNacimiento" display-format="YYYY-MM-DD"></ion-datetime>
               </ion-item>
             </ion-col>
-          </ion-row>
+          </ion-row> -->
 
           <ion-row>
             <ion-col size="11">
               <label for="">Nacionalidad</label>
               <ion-item>
-                <ion-select class="inputs" formControlName="nacionalidad">
+                <ion-select class="inputs" formControlName="nacionalidad" (ionChange)="handleEstadoNroDocumento($event)">
+                  <ion-select-option value="chilena">Chilena</ion-select-option>
                   <ion-select-option value="venezolano">Veneco</ion-select-option>
                   <ion-select-option value="colombiano">Colombiano</ion-select-option>
                   <ion-select-option value="peruano">Peruano</ion-select-option>
                   <ion-select-option value="boliviano">Boliviano</ion-select-option>
                 </ion-select>
               </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row *ngIf="estado_nroDocumento">
+            <ion-col size="11">
+              <label for="">Numero de documento</label>
+              <ion-input class="inputs" type="number" formControlName="nroDocumento"></ion-input>
             </ion-col>
           </ion-row>
 

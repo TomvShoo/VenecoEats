@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Usuario } from 'src/app/interfaces/IUsuario';
+import { IUsuario } from 'src/app/interfaces/IUsuario';
+import { RegisterService } from 'src/app/services/register.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,27 +9,27 @@ import { Usuario } from 'src/app/interfaces/IUsuario';
 })
 export class RegisterComponent implements OnInit {
 
-  // usuario: Usuario;
+  estado_nroDocumento: boolean = false;
 
   registerForm = new FormGroup({
     rut: new FormControl('', Validators.required),
     nombreP: new FormControl('', Validators.required),
-    nombreS: new FormControl('', Validators.required),
+    nombreS: new FormControl(''),
     apellidoP: new FormControl('', Validators.required),
-    apellidoM: new FormControl('', Validators.required),
+    apellidoM: new FormControl(''),
     sexo: new FormControl('',Validators.required),
-    fechaNacimiento: new FormControl('',Validators.required),
+    // fechaNacimiento: new FormControl('',Validators.required),
+    nroDocumento: new FormControl(''),
     nacionalidad: new FormControl('',Validators.required),
     correo: new FormControl('',Validators.required),
     contrasenia: new FormControl('', Validators.required),
     // telefono: new FormControl('',Validators.required)
   })
 
-  constructor() { }
+  constructor(private servicio:RegisterService) { }
 
   ngOnInit() {
-    console.log(Date());
-    console.log();
+    
   }
 
   public mostrarFecha(){
@@ -71,8 +72,33 @@ export class RegisterComponent implements OnInit {
     pagina.className = pagina.className + " oculta"
   }
 
+  public handleEstadoNroDocumento(e){
+    let nacionalidad = e.detail.value
+    if (nacionalidad != 'chilena') {
+      this.estado_nroDocumento = true;
+    } else {
+      this.estado_nroDocumento = false;
+    }
+  }
+
   public onSubmit(){
-    console.log(this.registerForm.value);
+    let nuevoUsuario: IUsuario = {
+      rut: this.registerForm.value.rut,
+      p_nombre: this.registerForm.value.nombreP,
+      s_nombre: this.registerForm.value.nombreS,
+      p_apellido: this.registerForm.value.apellidoP,
+      s_apellido: this.registerForm.value.apellidoM,
+      nro_documento: parseInt(this.registerForm.value.nroDocumento),
+      nacionalidad: this.registerForm.value.nacionalidad,
+      calificaion: '---',
+      genero: this.registerForm.value.sexo,
+      correo: this.registerForm.value.correo,
+      passsword: this.registerForm.value.contrasenia
+    };
+
+    console.log(nuevoUsuario);
     
+
+    this.servicio.postUsuario(nuevoUsuario).subscribe(data => {return})
   }
 }
