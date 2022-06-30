@@ -4,6 +4,23 @@
     // box-sizing: border-box;
 }
 
+.contenedorFormulario {
+    display: flex;
+    justify-content: center;
+}
+
+form{
+    width: 95%;
+    position: absolute;
+    margin-top: 20px;
+    // padding: 10px;
+
+    div{
+        padding: 10px;
+    }
+}
+
+
 // input {
 //     padding: 0 !important;
 //     margin: 0 !important;
@@ -114,6 +131,7 @@
 }
 // Formulario pagina 1
 
+// No se usa
 .registerBackground{
     position: fixed;
     z-index: 1;
@@ -184,6 +202,6 @@ ion-select{
 
 
 .oculta {
-    right: 100%;
+    right: 120%;
 }
 

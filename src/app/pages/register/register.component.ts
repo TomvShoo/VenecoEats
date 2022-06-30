@@ -8,76 +8,76 @@ import { RegisterService } from 'src/app/services/register.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-
   estado_nroDocumento: boolean = false;
 
-  registerForm:FormGroup = new FormGroup({
+  registerForm: FormGroup = new FormGroup({
     rut: new FormControl('', [Validators.required, Validators.maxLength(8)]),
-    nombreP: new FormControl(null, {validators:Validators.required}),
+    nombreP: new FormControl(null, { validators: Validators.required }),
     nombreS: new FormControl(''),
     apellidoP: new FormControl('', Validators.required),
     apellidoM: new FormControl(''),
-    sexo: new FormControl('',Validators.required),
+    sexo: new FormControl('', Validators.required),
     // fechaNacimiento: new FormControl('',Validators.required),
     nroDocumento: new FormControl(''),
-    nacionalidad: new FormControl('',Validators.required),
-    correo: new FormControl('',[Validators.required]),
-    contrasenia: new FormControl(null, Validators.required),
+    nacionalidad: new FormControl('', Validators.required),
+    correo: new FormControl('', [Validators.required, Validators.email]),
+    contrasenia: new FormControl('', Validators.required),
     // telefono: new FormControl('',Validators.required)
-  })
+  });
 
-  constructor(private servicio:RegisterService) { }
+  constructor(private servicio: RegisterService) {}
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   // public mostrarFecha(){
   //   console.log(this.registerForm.value.fechaNacimiento);
   // }
 
-  public mostrarContrasenia(e){
+  public mostrarContrasenia(e) {
     console.log(e);
   }
 
-  public sigPagina(clase:string){
-    let pagina = document.getElementsByClassName(clase)[0]
+  public sigPagina(clase: string) {
+    let pagina = document.getElementsByClassName(clase)[0];
 
     if (clase == 'formularioUno') {
-      let sigFormulario = document.getElementsByClassName('formularioTres oculta')[0]
-      sigFormulario.className = sigFormulario.className.split(' ')[0]
-
+      let sigFormulario = document.getElementsByClassName(
+        'formularioTres oculta'
+      )[0];
+      sigFormulario.className = sigFormulario.className.split(' ')[0];
     } else if (clase == 'formularioTres') {
-      let sigFormulario = document.getElementsByClassName('formularioCuatro oculta')[0]
-      sigFormulario.className = sigFormulario.className.split(' ')[0]
-
+      let sigFormulario = document.getElementsByClassName(
+        'formularioCuatro oculta'
+      )[0];
+      sigFormulario.className = sigFormulario.className.split(' ')[0];
     } else if (clase == 'formularioCuatro') {
       // let sigFormulario = document.getElementsByClassName('formularioCuatro oculta')[0]
       // sigFormulario.className = sigFormulario.className.split(' ')[0]
-      console.log("formulario 4");
-      return
+      console.log('formulario 4');
+      return;
     }
 
-    pagina.className = pagina.className + " oculta"
-
+    pagina.className = pagina.className + ' oculta';
   }
 
-  public antPagina(clase:string){
-    let pagina = document.getElementsByClassName(clase)[0]
+  public antPagina(clase: string) {
+    let pagina = document.getElementsByClassName(clase)[0];
 
-    if (clase == "formularioTres"){
-      let paginaAnterior = document.getElementsByClassName("formularioUno")[0]
-      paginaAnterior.className = paginaAnterior.className.split(" ")[0]
-    } else if (clase == "formularioCuatro"){
-      let paginaAnterior = document.getElementsByClassName("formularioTres oculta")[0]
-      paginaAnterior.className = paginaAnterior.className.split(" ")[0]
+    if (clase == 'formularioTres') {
+      let paginaAnterior = document.getElementsByClassName('formularioUno')[0];
+      paginaAnterior.className = paginaAnterior.className.split(' ')[0];
+    } else if (clase == 'formularioCuatro') {
+      let paginaAnterior = document.getElementsByClassName(
+        'formularioTres oculta'
+      )[0];
+      paginaAnterior.className = paginaAnterior.className.split(' ')[0];
     }
 
-    pagina.className = pagina.className + " oculta"
+    pagina.className = pagina.className + ' oculta';
   }
 
-  public handleEstadoNroDocumento(e){
-    let nacionalidad = e.detail.value
+  public handleEstadoNroDocumento(e) {
+    let nacionalidad = e.detail.value;
     if (nacionalidad != 'chilena') {
       this.estado_nroDocumento = true;
     } else {
@@ -85,7 +85,20 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  public onSubmit(e){
+  public validarPagina2() {
+    let llaves = Object.keys(this.registerForm.value).filter((m) => { return m != 'contrasenia'});
+    // console.log(llaves);
+    
+    for (let i = 0; i < llaves.length; i++) {
+      if (this.registerForm.get(llaves[i]).status === 'INVALID') {
+        
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public onSubmit(e) {
     let nuevoUsuario: IUsuario = {
       rut: this.registerForm.value.rut,
       p_nombre: this.registerForm.value.nombreP,
@@ -97,10 +110,12 @@ export class RegisterComponent implements OnInit {
       calificaion: '---',
       genero: this.registerForm.value.sexo,
       correo: this.registerForm.value.correo,
-      passsword: this.registerForm.value.contrasenia
+      passsword: this.registerForm.value.contrasenia,
     };
 
-    console.log(this.registerForm.valid);
-    // this.servicio.postUsuario(nuevoUsuario).subscribe(data => {return})
+    // console.log(this.registerForm.valid);
+    this.servicio.postUsuario(nuevoUsuario).subscribe((data) => {
+      return;
+    });
   }
 }

@@ -1,5 +1,6 @@
 <ion-content>
   <ion-grid>
+    <div class="contenedorFormulario">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit($event)">
 
       <!-- Inicio formulario 1 -->
@@ -130,9 +131,9 @@
                 <ion-select class="inputs" formControlName="nacionalidad" (ionChange)="handleEstadoNroDocumento($event)">
                   <ion-select-option value="chilena">Chilena</ion-select-option>
                   <ion-select-option value="venezolano">Veneco</ion-select-option>
-                  <ion-select-option value="colombiano">Colombiano</ion-select-option>
-                  <ion-select-option value="peruano">Peruano</ion-select-option>
-                  <ion-select-option value="boliviano">Boliviano</ion-select-option>
+                  <ion-select-option value="colombiano">Colombiana</ion-select-option>
+                  <ion-select-option value="peruano">Peruana</ion-select-option>
+                  <ion-select-option value="boliviano">Boliviana</ion-select-option>
                 </ion-select>
               </ion-item>
             </ion-col>
@@ -148,16 +149,16 @@
           <ion-row>
             <ion-col size="11">
               <label for="">Correo</label>
-              <ion-input class="inputs" type="text" formControlName="correo"></ion-input>
+              <ion-input class="inputs" type="email" formControlName="correo"></ion-input>
             </ion-col>
           </ion-row>
 
           <ion-row class="campoBotones">
             <ion-col size="5" class="col-center">
-              <ion-button (click)="antPagina('formularioTres')">Cancelar</ion-button>
+              <ion-button>Cancelar</ion-button>
             </ion-col>
             <ion-col size="5" class="col-center">
-              <ion-button (click)="sigPagina('formularioTres')">Siguiente</ion-button>
+              <ion-button (click)="sigPagina('formularioTres')" [disabled]="validarPagina2()">Siguiente</ion-button>
             </ion-col>
           </ion-row>
 
@@ -183,10 +184,12 @@
             </ion-input>
           </ion-col>
           <ion-col size="2" class="mostrarContraseñaCampo">
-            <ion-icon class="mostrarContraseña" (click)="mostrarContrasenia()" name="eye"></ion-icon>
+            <ion-icon class="mostrarContraseña" (click)="validarPagina2()" name="eye"></ion-icon>
           </ion-col>
         </ion-row>
+
         <div>{{registerForm.get("contrasenia").errors | json}}</div>
+        
         <ion-row class="campoBotones">
           <ion-col size="5" offset="1" class="col-center ">
             <ion-button expand="block"  (click)="antPagina('formularioCuatro')">Volver</ion-button>
@@ -269,7 +272,7 @@
 
       </div> -->
       <!-- Fin formulario 6 -->
-
     </form>
+  </div>
   </ion-grid>
 </ion-content>
