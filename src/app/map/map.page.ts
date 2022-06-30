@@ -26,8 +26,8 @@ export class MapPage implements OnInit {
   points: MyPoint[] = [
     {
       position: {
-        lat: null,
-        lng: null,
+        lat: -33.440172,
+        lng: -70.6564448,
       },
       title: 'Ver pedido',
       image: 'https://cdn-icons-png.flaticon.com/512/4645/4645316.png',

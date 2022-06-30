@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ClienteService } from 'src/app/services/cliente.service';
-import { IClient } from 'src/app/services/ICliente';
+import { ClienteService } from 'app/services/cliente.service';
+import { IClient } from 'app/services/ICliente';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { IonModal } from '@ionic/angular';
