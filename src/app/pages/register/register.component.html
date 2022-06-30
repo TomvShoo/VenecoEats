@@ -180,21 +180,21 @@
         </ion-row>
         <ion-row>
           <ion-col size="10">
-            <ion-input class="inputs" type="password" formControlName="contrasenia" required>
+            <ion-input class="inputs" [type]="tipoContrasenia" formControlName="contrasenia" required>
             </ion-input>
           </ion-col>
           <ion-col size="2" class="mostrarContraseñaCampo">
-            <ion-icon class="mostrarContraseña" (click)="validarPagina2()" name="eye"></ion-icon>
+            <ion-icon class="mostrarContraseña" (click)="mostrarContrasenia()" name="eye"></ion-icon>
           </ion-col>
         </ion-row>
 
-        <div>{{registerForm.get("contrasenia").errors | json}}</div>
+        <!-- <div>{{registerForm.get("contrasenia").errors | json}}</div> -->
         
         <ion-row class="campoBotones">
-          <ion-col size="5" offset="1" class="col-center ">
+          <ion-col size="5" class="col-center ">
             <ion-button expand="block"  (click)="antPagina('formularioCuatro')">Volver</ion-button>
           </ion-col>
-          <ion-col size="5" offset="1" class="col-center">
+          <ion-col size="5" class="col-center">
             <ion-button expand="block" type="submit" [disabled]="!registerForm.valid">Registrarse</ion-button>
           </ion-col>
         </ion-row>

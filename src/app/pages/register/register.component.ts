@@ -8,7 +8,8 @@ import { RegisterService } from 'src/app/services/register.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  estado_nroDocumento: boolean = false;
+  public estado_nroDocumento: boolean = false;
+  public tipoContrasenia = 'password';
 
   registerForm: FormGroup = new FormGroup({
     rut: new FormControl('', [Validators.required, Validators.maxLength(8)]),
@@ -33,8 +34,14 @@ export class RegisterComponent implements OnInit {
   //   console.log(this.registerForm.value.fechaNacimiento);
   // }
 
-  public mostrarContrasenia(e) {
-    console.log(e);
+  public mostrarContrasenia() {
+    this.tipoContrasenia = this.tipoContrasenia == 'password'? 'text': 'password'
+    // if (this.tipoContrasenia == 'password') {
+
+    //   this.tipoContrasenia = 'text'
+    // } else {
+    //   this.tipoContrasenia = 'password'
+    // }
   }
 
   public sigPagina(clase: string) {
@@ -91,7 +98,6 @@ export class RegisterComponent implements OnInit {
     
     for (let i = 0; i < llaves.length; i++) {
       if (this.registerForm.get(llaves[i]).status === 'INVALID') {
-        
         return true;
       }
     }
@@ -112,8 +118,6 @@ export class RegisterComponent implements OnInit {
       correo: this.registerForm.value.correo,
       passsword: this.registerForm.value.contrasenia,
     };
-
-    // console.log(this.registerForm.valid);
     this.servicio.postUsuario(nuevoUsuario).subscribe((data) => {
       return;
     });
