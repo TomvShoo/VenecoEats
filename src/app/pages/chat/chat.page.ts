@@ -22,10 +22,9 @@ export class ChatPage implements OnInit {
   }
 
   sendMessage() {
-    this.chatService.addChatMessage(this.newMsg).then(() => {
-      this.newMsg = '';
-      this.content.scrollToBottom();
-    });
+    this.chatService.addMsg(this.newMsg).subscribe((res) => {
+      console.log(res);
+    })
   }
 
   signOut() {

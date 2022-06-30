@@ -51,6 +51,7 @@ export class LoginPage implements OnInit {
     this.clientService.addClient(this.client).subscribe((res) => {
       console.log(res);
     });
+    this.router.navigateByUrl('/chat')
   }
 
   ngOnInit() {
