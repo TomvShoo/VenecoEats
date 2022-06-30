@@ -154,12 +154,36 @@
             "browserTarget": "app:build:production",
             "firebaseProject": "venecochat",
             "firebaseHostingSite": "venecochat"
+          }},
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "app:build:production"
+            }
+          }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "app:ionic-cordova-build",
+            "devServerTarget": "app:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "app:ionic-cordova-build:production",
+              "devServerTarget": "app:serve:production"
+            }
           }
         }
       }
     }
   },
   "cli": {
+    "analytics": "d86c6839-7aa4-4a0d-a918-562934f47748",
     "defaultCollection": "@ionic/angular-toolkit"
   },
   "schematics": {

@@ -28,6 +28,21 @@
         </ion-list>
       </ion-content>
     </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
+    <ion-router-outlet id="main-content">
+      <ion-tabs>
+        <ion-tab-bar slot="bottom">
+          <ion-tab-button>
+            <ion-icon name="chevron-up-outline"></ion-icon>
+          </ion-tab-button>
+    
+          <ion-toggle></ion-toggle>        
+    
+          <ion-tab-button routerLink="/home">
+            <ion-icon name="reorder-three-outline"></ion-icon>
+          </ion-tab-button>
+    
+        </ion-tab-bar>
+      </ion-tabs>
+    </ion-router-outlet>
   </ion-split-pane>
 </ion-app>

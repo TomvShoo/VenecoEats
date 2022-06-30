@@ -6,6 +6,7 @@ describe('new App', () => {
   beforeEach(() => {
     page = new AppPage();
   });
+<<<<<<< HEAD
   describe('default screen', () => {
     beforeEach(() => {
       page.navigateTo('/Inbox');
@@ -13,5 +14,11 @@ describe('new App', () => {
     it('should say Inbox', () => {
       expect(page.getParagraphText()).toContain('Inbox');
     });
+=======
+
+  it('should be blank', () => {
+    page.navigateTo();
+    expect(page.getParagraphText()).toContain('Start with Ionic UI Components');
+>>>>>>> origin/UB-14-mapa
   });
 });
