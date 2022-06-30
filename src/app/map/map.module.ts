@@ -8,6 +8,8 @@ import { IonicModule } from '@ionic/angular';
 import { MapPageRoutingModule } from './map-routing.module';
 
 import { MapPage } from './map.page';
+import { Routes } from '@angular/router';
+
 
 @NgModule({
   imports: [

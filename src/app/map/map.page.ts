@@ -18,6 +18,7 @@ interface MyPoint {
   templateUrl: './map.page.html',
   styleUrls: ['./map.page.scss'],
 })
+
 export class MapPage implements OnInit {
 
   @ViewChild(GoogleMap, { static: false }) map: GoogleMap;
@@ -31,7 +32,7 @@ export class MapPage implements OnInit {
         lng: null,
       },
       title: 'Ver pedido',
-      image: 'https://cdn-icons-png.flaticon.com/512/857/857681.png',  
+      image: 'https://cdn-icons-png.flaticon.com/512/4645/4645316.png',  
       text: 'Deslize para ver retiro del pedido y lugar de despacho',
     },
     {
@@ -40,9 +41,8 @@ export class MapPage implements OnInit {
         lng: -70.7058866272739,
       },
       title: 'McDonalds San Bernardo',
-      image:
-        'https://cdn-icons-png.flaticon.com/512/1996/1996068.png',
-      text: 'Animi voluptatem, aliquid impedit ratione placeat necessitatibus quisquam molestiae obcaecati laudantium?',
+      image: 'https://cdn-icons-png.flaticon.com/512/857/857681.png',
+      text: 'Descripcion de la direccion, osea calle y esas weas',
     },
     {
       position: {
@@ -51,9 +51,8 @@ export class MapPage implements OnInit {
       },
 
       title: 'Destino pedido',
-      image:
-        'https://img2.freepng.es/20180503/auq/kisspng-computer-icons-motorcycle-logistics-delivery-couri-5aeb7391dc71f4.779408461525379985903.jpg',
-      text: 'Animi voluptatem, aliquid impedit ratione placeat necessitatibus quisquam molestiae obcaecati laudantium?',
+      image: 'https://www.pngall.com/wp-content/uploads/12/Delivery-PNG-Free-Image.png',
+      text: 'Descripcion de la direccion, osea calle y esas weas',
     },
   ];
 
@@ -76,4 +75,7 @@ export class MapPage implements OnInit {
     const point = this.points[currentSlide];
     this.map.panTo(point.position);
   }
+
+  
+
 }
