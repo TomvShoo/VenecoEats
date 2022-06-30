@@ -169,3 +169,13 @@
   font-size: 0.8em;
   color: #d0d0d0;
 }
+
+.center-icon {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 5px #ff002b, 0 0 10px #f50202, 0 0 15px #e15c5c;
+}

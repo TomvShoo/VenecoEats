@@ -25,7 +25,8 @@ export class ProfilePage implements OnInit {
     private router: Router
   ) {}
 
-  userRut: string = '202224776';
+  private userRut: string = '202224776';
+  //private rutLocalStorage = JSON.parse(localStorage.getItem('rut'));
 
   ngOnInit() {
     this.service.getUser(this.userRut).then((res) => {
@@ -128,5 +129,29 @@ export class ProfilePage implements OnInit {
         ],
       })
       .then((alert) => alert.present());
+  }
+
+  async logOut() {
+    const alert = await this.alertCtrl.create({
+      header: 'Cerrar sesion',
+      cssClass: 'delete-alert',
+      message:
+        'Al confirmar, cerraras tu sesion y volveras a la pantalla de login',
+      buttons: [
+        {
+          text: 'Confirmar',
+          cssClass: 'boton-eliminar',
+          handler: () => {
+            //localStorage.removeItem('rut');
+            //this.router.navigateByUrl('/login');
+          },
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+      ],
+    });
+    await alert.present();
   }
 }
