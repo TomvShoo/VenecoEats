@@ -15,23 +15,12 @@ export class ChatPage implements OnInit {
   messages: Observable<any[]>;
   newMsg = '';
 
-  constructor(private chatService: ChatService, private router: Router) { }
+  constructor(private chatService: ChatService, private router: Router) {}
 
-  ngOnInit() {
-    this.messages = this.chatService.getChatMessages();
-  }
-
-  sendMessage() {
-    this.chatService.addMsg(this.newMsg).subscribe((res) => {
-      console.log(res);
-    })
-  }
+  ngOnInit() {}
 
   signOut() {
-    this.chatService.deleteCollection().then(() => {
-      this.router.navigateByUrl('/', { replaceUrl: true });
-    });
-    localStorage.removeItem('currentUser')
+    this.router.navigateByUrl('/', { replaceUrl: true });
+    localStorage.removeItem('currentUser');
   }
-
 }

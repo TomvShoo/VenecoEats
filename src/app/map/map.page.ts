@@ -18,9 +18,7 @@ interface MyPoint {
   templateUrl: './map.page.html',
   styleUrls: ['./map.page.scss'],
 })
-
 export class MapPage implements OnInit {
-
   @ViewChild(GoogleMap, { static: false }) map: GoogleMap;
   @ViewChild(IonSlides, { static: false }) slides: IonSlides;
 
@@ -32,7 +30,7 @@ export class MapPage implements OnInit {
         lng: null,
       },
       title: 'Ver pedido',
-      image: 'https://cdn-icons-png.flaticon.com/512/4645/4645316.png',  
+      image: 'https://cdn-icons-png.flaticon.com/512/4645/4645316.png',
       text: 'Deslize para ver retiro del pedido y lugar de despacho',
     },
     {
@@ -51,7 +49,8 @@ export class MapPage implements OnInit {
       },
 
       title: 'Destino pedido',
-      image: 'https://www.pngall.com/wp-content/uploads/12/Delivery-PNG-Free-Image.png',
+      image:
+        'https://www.pngall.com/wp-content/uploads/12/Delivery-PNG-Free-Image.png',
       text: 'Descripcion de la direccion, osea calle y esas weas',
     },
   ];
@@ -75,7 +74,4 @@ export class MapPage implements OnInit {
     const point = this.points[currentSlide];
     this.map.panTo(point.position);
   }
-
-  
-
 }

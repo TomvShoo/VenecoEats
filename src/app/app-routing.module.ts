@@ -15,12 +15,11 @@ const routes: Routes = [
     path: 'perfil',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
-  
-
 
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    loadChildren: () =>
+      import('./home/home.module').then((m) => m.HomePageModule),
   },
   // {
   //   path: '',
@@ -29,10 +28,9 @@ const routes: Routes = [
   // },
   {
     path: 'map',
-    loadChildren: () => import('./map/map.module').then(m => m.MapPageModule)
+    loadChildren: () => import('./map/map.module').then((m) => m.MapPageModule),
   },
-
-]
+];
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),

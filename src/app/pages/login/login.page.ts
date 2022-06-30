@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { IClient } from 'src/app/services/ICliente';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular'
+import { AlertController } from '@ionic/angular';
 import { IonModal } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -36,14 +36,15 @@ export class LoginPage implements OnInit {
 
   private clientService: ClienteService;
 
-
   constructor(
     private fb: FormBuilder,
     service: ClienteService,
     private router: Router,
     private alertCtrl: AlertController,
     private http: HttpClient
-  ) { this.clientService = service; }
+  ) {
+    this.clientService = service;
+  }
 
   private status: boolean = false;
 
@@ -51,7 +52,7 @@ export class LoginPage implements OnInit {
     this.clientService.addClient(this.client).subscribe((res) => {
       console.log(res);
     });
-    this.router.navigateByUrl('/chat')
+    this.router.navigateByUrl('/chat');
   }
 
   ngOnInit() {
@@ -61,29 +62,27 @@ export class LoginPage implements OnInit {
     });
   }
 
-  private url: string = 'https://yavoy-api.herokuapp.com/login'
+  private url: string = 'https://yavoy-api.herokuapp.com/login';
 
   async login() {
     const user = {
       correo: this.credentialForm.value.correo,
-      password: this.credentialForm.value.password
-    }
+      password: this.credentialForm.value.password,
+    };
     this.clientService.updateClient(user).subscribe((res) => {
       console.log(res);
-      const rut = this.client.rut
-      localStorage.setItem('currentUser', JSON.stringify(res).substring(57, 66))
-      console.log(JSON.stringify(res))
-    })
-    this.router.navigateByUrl('/chat')
+      const rut = this.client.rut;
+      localStorage.setItem(
+        'currentUser',
+        JSON.stringify(res).substring(57, 66)
+      );
+      console.log(JSON.stringify(res));
+    });
+    this.router.navigateByUrl('/chat');
     this.credentialForm.reset();
   }
 
   cancel() {
     this.modal.dismiss(null, 'cancel');
   }
-
-
 }
-
-
-
