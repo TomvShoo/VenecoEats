@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { UserService } from './user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IUser } from './user.model';
 import { AlertController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
+import { AppComponent } from 'app/app.component';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -16,17 +17,19 @@ export class ProfilePage implements OnInit {
   private date = new Date();
   private now = this.date.toLocaleDateString();
 
-  private estado = 'activo';
+  // private estado2 = this.appComponent.getValue();
+  private estado = 'true';
   private setEstado = '';
 
   constructor(
     private service: UserService,
     private alertCtrl: AlertController,
-    private router: Router
+    private router: Router,
+    private appComponent: AppComponent
   ) {}
 
-  private userRut: string = '202224776';
-  //private rutLocalStorage = JSON.parse(localStorage.getItem('rut'));
+  private rutLocalStorage = JSON.parse(localStorage.getItem('currentUser'));
+  private userRut: string = JSON.stringify(this.rutLocalStorage);
 
   ngOnInit() {
     this.service.getUser(this.userRut).then((res) => {
@@ -35,19 +38,19 @@ export class ProfilePage implements OnInit {
       this.user = res.data[0];
     });
 
-    const colorSet = document.getElementById('estado');
+    const colorSet = document.getElementById('estados');
 
-    if (this.estado == 'activo') {
+    if (this.estado == 'true') {
       if (colorSet) {
         colorSet.style.color = 'white';
         colorSet.style.textShadow = `0 0 5px #25d366,
         0 0 10px #48ee85, 0 0 15px #0ec0a5`;
         this.setEstado = 'Activo';
       }
-    } else if (this.estado == 'inactivo') {
+    } else if (this.estado == 'false') {
       colorSet.style.color = 'white';
       colorSet.style.textShadow = `0 0 5px #ff002b, 0 0 10px #f50202, 0 0 15px #e15c5c`;
-      this.setEstado = 'Inactivo';
+      this.setEstado = 'Wena';
     }
   }
 
@@ -142,8 +145,10 @@ export class ProfilePage implements OnInit {
           text: 'Confirmar',
           cssClass: 'boton-eliminar',
           handler: () => {
-            //localStorage.removeItem('rut');
-            //this.router.navigateByUrl('/login');
+            localStorage.removeItem('currentUser');
+            this.router.navigate(['']).then(() => {
+              window.location.reload();
+            });
           },
         },
         {

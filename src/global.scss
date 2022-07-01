@@ -17,7 +17,7 @@
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
 @import "~@ionic/angular/css/display.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -56,6 +56,11 @@
   color: #d0d0d0;
 }
 
-.modify-alert .cancelar-modificar{
+.modify-alert .cancelar-modificar {
   color: rgb(255, 4, 4);
+}
+
+input {
+  padding: 0 !important;
+  margin: 0 !important;
 }

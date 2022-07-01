@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="dark">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref=""></ion-back-button>
+      <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title id="title">Perfil</ion-title>
   </ion-toolbar>
@@ -32,7 +32,7 @@
             {{userInfo.s_apellido}}
           </div>
           <div class="paragraphe">
-            <i id="estado">{{setEstado}}</i>
+            <i (click)="click()" id="estados">{{setEstado}}</i>
           </div>
         </div>
       </div>

@@ -1,15 +1,17 @@
-<ion-content [fullscreen]="true">
-  <div class="titulo ion-no-padding">
-    <ion-col>
-      <h2 class="ion-text-capitalize">Ingresa a YaVoy</h2>
-    </ion-col>
-  </div>
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title align="center" id="title">Ingresa a YaVoy</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
   <div class="container-fluid">
-    <ion-grid>
+    <ion-grid class="content">
       <form>
         <ion-row class="inicioSesion">
-          <ion-img id="flag"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Flag_of_Chile_%281818-1854%29.svg/220px-Flag_of_Chile_%281818-1854%29.svg.png">
+          <ion-img
+            id="flag"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Flag_of_Chile_%281818-1854%29.svg/220px-Flag_of_Chile_%281818-1854%29.svg.png"
+          >
           </ion-img>
         </ion-row>
       </form>
@@ -20,76 +22,48 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button (click)="forma = !forma" class="boton-correo" expand="full" color="secondary" shape="round">
+          <ion-button
+            (click)="forma = !forma"
+            class="boton-correo"
+            expand="full"
+            color="secondary"
+            shape="round"
+          >
             <ion-icon slot="start" name="mail-outline"></ion-icon>
             Continuar con Correo Electronico
           </ion-button>
           <div id="form" *ngIf="forma">
             <form [formGroup]="credentialForm">
               <ion-item>
-                <ion-input placeholder="Correo Electronico" formControlName="correo" autofocus="true" clearInput="true">
+                <ion-input
+                  placeholder="Correo Electronico"
+                  formControlName="correo"
+                  autofocus="true"
+                  clearInput="true"
+                >
                 </ion-input>
               </ion-item>
               <ion-item>
-                <ion-input placeholder="Contraseña" type="password" clearInput="true" formControlName="password">
+                <ion-input
+                  placeholder="Contraseña"
+                  type="password"
+                  clearInput="true"
+                  formControlName="password"
+                >
                 </ion-input>
               </ion-item>
             </form>
             <div class="center">
-              <ion-button id="open-modal" expand="round">Registrarse</ion-button>
-              <ion-modal #modal trigger="open-modal">
-                <ng-template>
-                  <ion-content>
-                    <ion-toolbar>
-                      <h2>Registro</h2>
-                    </ion-toolbar>
-                    <ion-item>
-                      <ion-input [(ngModel)]="client.correo" placeholder="Correo Electronico" clearInput="true">
-                      </ion-input>
-                    </ion-item>
-                    <ion-item>
-                      <ion-input [(ngModel)]="client.password" placeholder="Contraseña" type="password"
-                        clearInput="true">
-                      </ion-input>
-                    </ion-item>
-                    <ion-item>
-                      <ion-input [(ngModel)]="client.rut" placeholder="RUT" clearInput="true">
-                      </ion-input>
-                    </ion-item>
-                    <ion-item>
-                      <ion-input [(ngModel)]="client.p_nombre" placeholder="Primer Nombre" clearInput="true">
-                      </ion-input>
-                    </ion-item>
-                    <ion-item>
-                      <ion-input [(ngModel)]="client.s_nombre" placeholder="Segundo Nombre" clearInput="true">
-                      </ion-input>
-                    </ion-item>
-                    <ion-item>
-                      <ion-input [(ngModel)]="client.p_apellido" placeholder="Primer Apellido" clearInput="true">
-                      </ion-input>
-                    </ion-item>
-                    <ion-item>
-                      <ion-input [(ngModel)]="client.s_apellido" placeholder="Segundo Apellido" clearInput="true">
-                      </ion-input>
-                    </ion-item>
-                    <ion-item>
-                      <ion-input [(ngModel)]="client.nro_documento" placeholder="N° de Documento" clearInput="true">
-                      </ion-input>
-                    </ion-item>
-                    <ion-item>
-                      <ion-input [(ngModel)]="client.nacionalidad" placeholder="Nacionalidad" clearInput="true">
-                      </ion-input>
-                    </ion-item>
-                    <ion-item>
-                      <ion-input [(ngModel)]="client.genero" placeholder="Genero" clearInput="true">
-                      </ion-input>
-                    </ion-item>
-                    <ion-button expand="round" (click)="sendSubmit()">Confirmar Registro</ion-button>
-                    <ion-button expand="round" color="secondary" (click)="cancel()">Cancelar</ion-button>
-                  </ion-content>
-                </ng-template>
-              </ion-modal>
-              <ion-button class="signIn" expand="round" color="secondary" (click)="login()">Ingresar</ion-button>
+              <ion-button id="" expand="round" (click)="goRegister()"
+                >Registrarse</ion-button
+              >
+              <ion-button
+                class="signIn"
+                expand="round"
+                color="secondary"
+                (click)="login()"
+                >Ingresar</ion-button
+              >
             </div>
           </div>
         </ion-col>

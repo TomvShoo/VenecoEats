@@ -48,11 +48,8 @@ export class LoginPage implements OnInit {
 
   private status: boolean = false;
 
-  sendSubmit() {
-    this.clientService.addClient(this.client).subscribe((res) => {
-      console.log(res);
-    });
-    this.router.navigateByUrl('/chat');
+  goRegister() {
+    this.router.navigateByUrl('/register');
   }
 
   ngOnInit() {
@@ -69,16 +66,45 @@ export class LoginPage implements OnInit {
       correo: this.credentialForm.value.correo,
       password: this.credentialForm.value.password,
     };
-    this.clientService.updateClient(user).subscribe((res) => {
-      console.log(res);
-      const rut = this.client.rut;
-      localStorage.setItem(
-        'currentUser',
-        JSON.stringify(res).substring(57, 66)
-      );
-      console.log(JSON.stringify(res));
-    });
-    this.router.navigateByUrl('/chat');
+    this.clientService.updateClient(user).subscribe(
+      (res) => {
+        console.log(res);
+        localStorage.setItem(
+          'currentUser',
+          JSON.stringify(res).substring(57, 66)
+        );
+        if (localStorage.key(0) == 'currentUser') {
+          this.alertCtrl
+            .create({
+              header: 'Inicio de sesión exitoso',
+              buttons: [
+                {
+                  text: 'Continuar',
+                  handler: () => {
+                    this.router.navigate(['/map']).then(() => {
+                      window.location.reload();
+                    });
+                  },
+                },
+              ],
+            })
+            .then((alert) => alert.present());
+        }
+        console.log(JSON.stringify(res));
+      },
+      (error) => {
+        this.alertCtrl
+          .create({
+            header: 'Error al iniciar sesión',
+            buttons: [
+              {
+                text: 'Continuar',
+              },
+            ],
+          })
+          .then((alert) => alert.present());
+      }
+    );
     this.credentialForm.reset();
   }
 

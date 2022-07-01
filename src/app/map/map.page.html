@@ -1,27 +1,25 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Ya voy!!</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
+  <ion-toolbar color="dark">
+    <ion-title align="center" id="title">YaVoy</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true">
-
   <google-map height="100%" width="100%" [center]="center">
-    <map-marker *ngFor="let point of points" [position]="point.position" [title]="point.title">
+    <map-marker
+      *ngFor="let point of points"
+      [position]="point.position"
+      [title]="point.title"
+    >
     </map-marker>
   </google-map>
-
-
 
   <ion-slides (ionSlideDidChange)="onSlideDidChange()">
     <ion-slide *ngFor="let point of points">
       <ion-card class="carta">
         <ion-item>
           <ion-thumbnail class="fotoMensaje" slot="start">
-            <img [src]="point.image">
+            <img [src]="point.image" />
           </ion-thumbnail>
           <ion-label class="ion-text-wrap">
             <h2>{{ point.title }}</h2>
@@ -31,5 +29,4 @@
       </ion-card>
     </ion-slide>
   </ion-slides>
-
 </ion-content>

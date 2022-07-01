@@ -118,8 +118,8 @@ ion-item.selected {
   --color: var(--ion-color-primary);
 }
 ion-toggle {
-    height: 25px;
-    width: 60px;
-    --background: rgb(212, 0, 0);
-    --background-checked: rgb(0, 168, 0);
+  height: 25px;
+  width: 100px;
+  --background: rgb(212, 0, 0);
+  --background-checked: rgb(0, 168, 0);
 }

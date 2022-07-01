@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { LoginPage } from './pages/login/login.page';
 import { MapPage } from './map/map.page';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   {
@@ -15,17 +16,15 @@ const routes: Routes = [
     path: 'perfil',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
-
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
   {
     path: 'home',
     loadChildren: () =>
       import('./home/home.module').then((m) => m.HomePageModule),
   },
-  // {
-  //   path: '',
-  //   redirectTo: 'home',
-  //   pathMatch: 'full'
-  // },
   {
     path: 'map',
     loadChildren: () => import('./map/map.module').then((m) => m.MapPageModule),
