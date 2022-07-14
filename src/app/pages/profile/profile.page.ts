@@ -142,6 +142,7 @@ export class ProfilePage implements OnInit {
           cssClass: 'boton-eliminar',
           handler: () => {
             localStorage.removeItem('currentUser');
+            localStorage.removeItem('currentUserId');
             this.router.navigate(['']).then(() => {
               window.location.reload();
             });

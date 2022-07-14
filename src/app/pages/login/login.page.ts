@@ -57,45 +57,42 @@ export class LoginPage implements OnInit {
       correo: this.credentialForm.value.correo,
       password: this.credentialForm.value.password,
     };
-    this.clientService.updateClient(user).subscribe(
-      (res) => {
-        console.log(res);
-        localStorage.setItem(
-          'currentUser',
-          JSON.stringify(res).substring(57, 66)
-        );
-        if (localStorage.key(0) == 'currentUser') {
-          this.alertCtrl
-            .create({
-              header: 'Inicio de sesión exitoso',
-              buttons: [
-                {
-                  text: 'Continuar',
-                  handler: () => {
-                    this.router.navigate(['/map']).then(() => {
-                      window.location.reload();
-                    });
-                  },
-                },
-              ],
-            })
-            .then((alert) => alert.present());
-        }
-        console.log(JSON.stringify(res));
-      },
-      (error) => {
-        this.alertCtrl
-          .create({
-            header: 'Error al iniciar sesión',
-            buttons: [
-              {
-                text: 'Continuar',
+    var res: any = await this.clientService.updateClient(user).toPromise();
+
+    if (!res) {
+      this.alertCtrl
+        .create({
+          header: 'Error al iniciar sesión',
+          buttons: [
+            {
+              text: 'Continuar',
+            },
+          ],
+        })
+        .then((alert) => alert.present());
+    }
+
+    localStorage.setItem('currentUser', res.data.Rut_Rep);
+    localStorage.setItem('currentUserId', res.data.idRepartidor);
+
+    if (localStorage.getItem('currentUser')) {
+      this.alertCtrl
+        .create({
+          header: 'Inicio de sesión exitoso',
+          buttons: [
+            {
+              text: 'Continuar',
+              handler: () => {
+                this.router.navigate(['/map']).then(() => {
+                  window.location.reload();
+                });
               },
-            ],
-          })
-          .then((alert) => alert.present());
-      }
-    );
+            },
+          ],
+        })
+        .then((alert) => alert.present());
+    }
+
     this.credentialForm.reset();
   }
 

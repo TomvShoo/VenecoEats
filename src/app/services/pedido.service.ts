@@ -12,8 +12,8 @@ export class PedidoService {
 
   constructor(public http: HttpClient) {}
 
-  async getPedido() {
-    const res = await fetch(`${this.url}`, {
+  async getPedido(idRepartidor: number) {
+    const res = await fetch(`${this.url}/${idRepartidor}`, {
       method: 'GET',
     });
 

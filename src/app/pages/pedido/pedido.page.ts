@@ -22,17 +22,21 @@ export class PedidoPage implements OnInit {
   public cards: Array<IPedido>;
   public listar: Array<IPedido>;
 
+  private idRepartidorLocalStorage = JSON.parse(
+    localStorage.getItem('currentUserId')
+  );
+
   private date: string;
 
   constructor(private service: PedidoService, private http: HttpClient) {}
 
   ngOnInit() {
-    this.service.getPedido().then((res) => {
-      this.pedido = res.allOrders[0];
-      this.date = res.allOrders[0].Fecha_p.slice(0, 10);
-      this.cards = res.allOrders;
-      this.listar = res.allOrders;
-      console.log(this.pedido);
+    this.service.getPedido(this.idRepartidorLocalStorage).then((res) => {
+      this.pedido = res.order[0];
+      this.date = res.order[0].Fecha_p.slice(0, 10);
+      this.cards = res.order;
+      this.listar = res.order;
+      console.log(res.order);
     });
   }
 
@@ -48,7 +52,7 @@ export class PedidoPage implements OnInit {
 
   public getCards() {
     let listaPedidos = [];
-    listaPedidos = this.cards.filter((x) => x.idPedido);
+    listaPedidos = this.cards;
     this.listar = listaPedidos;
   }
 }
