@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { IUser } from './user.model';
 import { AlertController } from '@ionic/angular';
-import { HttpClient } from '@angular/common/http';
-import { AppComponent } from 'app/app.component';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -24,8 +23,7 @@ export class ProfilePage implements OnInit {
   constructor(
     private service: UserService,
     private alertCtrl: AlertController,
-    private router: Router,
-    private appComponent: AppComponent
+    private router: Router
   ) {}
 
   private rutLocalStorage = JSON.parse(localStorage.getItem('currentUser'));
@@ -34,7 +32,6 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
     this.service.getUser(this.userRut).then((res) => {
       this.userInfo = res.data[0];
-      console.log(this.userInfo);
       this.user = res.data[0];
     });
 
@@ -65,7 +62,6 @@ export class ProfilePage implements OnInit {
           cssClass: 'boton-eliminar',
           handler: () => {
             this.service.deleteUser(this.user.Rut_Rep).subscribe((res) => {
-              console.log(res);
               this.router.navigateByUrl('/');
             });
           },

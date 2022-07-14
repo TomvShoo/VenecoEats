@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pedidos ya</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let list of listar">
+    <ion-card class="cartaPedido">
+      <ion-item>
+        <ion-icon name="pin" slot="start"></ion-icon>
+        <ion-label>Pedido {{list.idPedido}}</ion-label>
+      </ion-item>
+      <ion-card-content>
+        <p id="estado">Estado del pedido: {{list.Estado}}</p>
+        <h2>Descripcion del pedido: {{list.Descripcion}}</h2>
+        <p id="date">Fecha del pedido: {{date}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IClient } from './ICliente';
-import { pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -10,6 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class ClienteService {
   private url: string = 'https://yavoy-api.herokuapp.com/delivery';
+  private urlLogin: string = 'https://yavoy-api.herokuapp.com/delivery/login';
   private httpClient: HttpClient;
 
   constructor(client: HttpClient) {
@@ -19,7 +19,7 @@ export class ClienteService {
   public getClient(): Observable<Array<IClient>> {
     return this.httpClient.get<Array<IClient>>(this.url, {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
     });
   }
@@ -41,6 +41,6 @@ export class ClienteService {
   }
 
   public updateClient(newData: any) {
-    return this.httpClient.post('https://yavoy-api.herokuapp.com/login', newData);
+    return this.httpClient.post(this.urlLogin, newData);
   }
 }

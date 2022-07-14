@@ -1,8 +1,5 @@
 import { Injectable, platformCore } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IUser } from './user.model';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +18,6 @@ export class UserService {
     });
 
     const resText = await res.text();
-    console.log(JSON.parse(resText));
     return JSON.parse(resText);
   }
 

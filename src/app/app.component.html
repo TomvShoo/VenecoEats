@@ -32,10 +32,10 @@
       <ion-router-outlet id="main-content">
         <ion-tabs *ngIf="userLog == 1">
           <ion-tab-bar slot="bottom">
-            <ion-tab-button>
-              <ion-icon name="chevron-up-outline"></ion-icon>
+            <ion-tab-button routerLink="/pedido">
+              <ion-icon name="bag-handle-outline"> </ion-icon>
             </ion-tab-button>
-            <ion-toggle></ion-toggle>
+            <ion-toggle checked="true"></ion-toggle>
             <ion-tab-button routerLink="/home">
               <ion-icon name="reorder-three-outline"></ion-icon>
             </ion-tab-button>

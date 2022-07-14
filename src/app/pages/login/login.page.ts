@@ -1,15 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { ClienteService } from 'app/services/cliente.service';
 import { IClient } from 'app/services/ICliente';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { IonModal } from '@ionic/angular';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { pipe } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -40,8 +35,7 @@ export class LoginPage implements OnInit {
     private fb: FormBuilder,
     service: ClienteService,
     private router: Router,
-    private alertCtrl: AlertController,
-    private http: HttpClient
+    private alertCtrl: AlertController
   ) {
     this.clientService = service;
   }
@@ -58,9 +52,6 @@ export class LoginPage implements OnInit {
       password: [''],
     });
   }
-
-  private url: string = 'https://yavoy-api.herokuapp.com/login';
-
   async login() {
     const user = {
       correo: this.credentialForm.value.correo,

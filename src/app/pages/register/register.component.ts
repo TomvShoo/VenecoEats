@@ -122,7 +122,6 @@ export class RegisterComponent implements OnInit {
       correo: this.registerForm.value.correo,
       password: this.registerForm.value.contrasenia,
     };
-    console.log(nuevoUsuario.password);
 
     this.servicio.postUsuario(nuevoUsuario).subscribe((data) => {
       return;

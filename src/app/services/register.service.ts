@@ -5,17 +5,20 @@ import { Observable } from 'rxjs';
 import { IUsuario } from '../interfaces/IUsuario';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RegisterService {
+  private url: string = 'https://yavoy-api.herokuapp.com/';
 
-  private url:string = "https://yavoy-api.herokuapp.com/"
+  constructor(private client: HttpClient) {}
 
-  constructor(private client:HttpClient) { }
-
-  public postUsuario(usuario:IUsuario): Observable<IUsuario>{
-    return this.client.post<IUsuario>(`${this.url}delivery/`, JSON.stringify(usuario), {
-      headers: {"Content-Type": "application/json"}
-    })
+  public postUsuario(usuario: IUsuario): Observable<IUsuario> {
+    return this.client.post<IUsuario>(
+      `${this.url}delivery/`,
+      JSON.stringify(usuario),
+      {
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 }
